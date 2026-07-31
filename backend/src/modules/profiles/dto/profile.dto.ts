@@ -63,8 +63,14 @@ class SkillItemDto {
 class CareerGoalsDto {
   @IsOptional() @IsString() desiredRole?: string;
   @IsOptional() @IsString() targetSalary?: string;
-  @IsOptional() @IsArray() @IsString({ each: true }) preferredCountries?: string[];
-  @IsOptional() @IsArray() @IsString({ each: true }) preferredCompanies?: string[];
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  preferredCountries?: string[];
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  preferredCompanies?: string[];
   @IsOptional() @IsArray() @IsString({ each: true }) industries?: string[];
   @IsOptional() @IsString() careerObjectives?: string;
   @IsOptional() @IsString() learningGoals?: string;

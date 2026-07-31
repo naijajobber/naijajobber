@@ -35,9 +35,7 @@ export class UsersRepository {
       .exec();
   }
 
-  async findByEmailWithSensitive(
-    email: string,
-  ): Promise<UserDocument | null> {
+  async findByEmailWithSensitive(email: string): Promise<UserDocument | null> {
     return this.userModel
       .findOne({ email: email.toLowerCase(), isDeleted: false })
       .select('+password +refreshTokenHash')

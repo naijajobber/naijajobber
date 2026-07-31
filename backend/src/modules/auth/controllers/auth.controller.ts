@@ -8,11 +8,7 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CurrentUser } from '../../../common/decorators/current-user.decorator';
 import { Public } from '../../../common/decorators/public.decorator';
 import { JwtAuthGuard } from '../../../common/guards/jwt-auth.guard';
@@ -52,10 +48,7 @@ export class AuthController {
   @Post('logout')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Logout and revoke refresh token' })
-  logout(
-    @CurrentUser() user: JwtPayload,
-    @Body() body: RefreshTokenDto,
-  ) {
+  logout(@CurrentUser() user: JwtPayload, @Body() body: RefreshTokenDto) {
     return this.authService.logout(user.sub, body.refreshToken);
   }
 
@@ -124,10 +117,7 @@ export class AuthController {
   @Public()
   @Get('google/callback')
   @ApiOperation({ summary: 'Google OAuth callback (or local mock)' })
-  googleCallback(
-    @Query('code') code?: string,
-    @Query('email') email?: string,
-  ) {
+  googleCallback(@Query('code') code?: string, @Query('email') email?: string) {
     return this.authService.loginWithGoogle({
       code,
       mockEmail: email,

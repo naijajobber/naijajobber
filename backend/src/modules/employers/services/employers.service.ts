@@ -204,7 +204,8 @@ export class EmployersService {
         subscription = {
           planCode: (sub as { planCode?: string }).planCode,
           status: (sub as { status?: string }).status,
-          currentPeriodEnd: (sub as { currentPeriodEnd?: Date }).currentPeriodEnd,
+          currentPeriodEnd: (sub as { currentPeriodEnd?: Date })
+            .currentPeriodEnd,
         };
       }
     } catch {

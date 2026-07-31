@@ -8,21 +8,29 @@ function mockModel(overrides: Record<string, unknown> = {}) {
     find: jest.fn().mockReturnValue({
       sort: jest.fn().mockReturnValue({
         limit: jest.fn().mockReturnValue({
-          lean: jest.fn().mockReturnValue({ exec: jest.fn().mockResolvedValue([]) }),
+          lean: jest
+            .fn()
+            .mockReturnValue({ exec: jest.fn().mockResolvedValue([]) }),
           exec: jest.fn().mockResolvedValue([]),
         }),
         skip: jest.fn().mockReturnValue({
           limit: jest.fn().mockReturnValue({
-            lean: jest.fn().mockReturnValue({ exec: jest.fn().mockResolvedValue([]) }),
+            lean: jest
+              .fn()
+              .mockReturnValue({ exec: jest.fn().mockResolvedValue([]) }),
             exec: jest.fn().mockResolvedValue([]),
           }),
         }),
-        lean: jest.fn().mockReturnValue({ exec: jest.fn().mockResolvedValue([]) }),
+        lean: jest
+          .fn()
+          .mockReturnValue({ exec: jest.fn().mockResolvedValue([]) }),
         exec: jest.fn().mockResolvedValue([]),
       }),
     }),
     distinct: jest.fn().mockResolvedValue(['NG', 'GH']),
-    findOne: jest.fn().mockReturnValue({ exec: jest.fn().mockResolvedValue(null) }),
+    findOne: jest
+      .fn()
+      .mockReturnValue({ exec: jest.fn().mockResolvedValue(null) }),
     create: jest.fn(),
     ...overrides,
   };

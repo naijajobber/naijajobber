@@ -40,7 +40,9 @@ export class FlutterwaveProvider implements PaymentProvider {
     _headers: Record<string, string | string[] | undefined>,
     body: Buffer | string | Record<string, unknown>,
   ): Promise<WebhookResult> {
-    this.logger.warn('Flutterwave scaffold webhook — no signature verification');
+    this.logger.warn(
+      'Flutterwave scaffold webhook — no signature verification',
+    );
     const parsed =
       typeof body === 'object' && !Buffer.isBuffer(body)
         ? body

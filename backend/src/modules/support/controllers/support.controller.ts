@@ -20,7 +20,10 @@ export class SupportController {
 
   @Post()
   @ApiOperation({ summary: 'Create a support ticket' })
-  create(@CurrentUser() user: JwtPayload, @Body() body: Record<string, unknown>) {
+  create(
+    @CurrentUser() user: JwtPayload,
+    @Body() body: Record<string, unknown>,
+  ) {
     return this.supportService.create(user.sub, user.role, body);
   }
 }

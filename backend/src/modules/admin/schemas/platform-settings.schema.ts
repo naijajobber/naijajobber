@@ -23,7 +23,8 @@ export class PlatformApiKey {
   @Prop({ type: Date, default: null })
   revokedAt!: Date | null;
 }
-export const PlatformApiKeySchema = SchemaFactory.createForClass(PlatformApiKey);
+export const PlatformApiKeySchema =
+  SchemaFactory.createForClass(PlatformApiKey);
 
 @Schema({ timestamps: true, collection: 'platform_settings' })
 export class PlatformSettings {

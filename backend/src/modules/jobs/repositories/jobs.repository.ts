@@ -96,7 +96,12 @@ export class JobsRepository {
 
     const skip = (filters.page - 1) * filters.limit;
     const [items, total] = await Promise.all([
-      this.jobModel.find(query).sort(sort).skip(skip).limit(filters.limit).exec(),
+      this.jobModel
+        .find(query)
+        .sort(sort)
+        .skip(skip)
+        .limit(filters.limit)
+        .exec(),
       this.jobModel.countDocuments(query).exec(),
     ]);
 

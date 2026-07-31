@@ -39,7 +39,7 @@ export class UploadService {
             (err, res) => {
               if (err || !res)
                 reject(err || new Error('Cloudinary upload failed'));
-              else resolve(res as { secure_url: string });
+              else resolve(res);
             },
           );
           stream.end(file.buffer);

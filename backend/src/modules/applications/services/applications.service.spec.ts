@@ -1,8 +1,8 @@
+import { ConflictException, ForbiddenException } from '@nestjs/common';
 import {
-  ConflictException,
-  ForbiddenException,
-} from '@nestjs/common';
-import { ApplicationStatus, JobStatus } from '../../../common/enums/domain.enum';
+  ApplicationStatus,
+  JobStatus,
+} from '../../../common/enums/domain.enum';
 import { Role } from '../../../common/enums/role.enum';
 import { EmployersService } from '../../employers/services/employers.service';
 import { JobsService } from '../../jobs/services/jobs.service';
@@ -72,9 +72,13 @@ describe('ApplicationsService', () => {
       status: ApplicationStatus.SUBMITTED,
     } as never);
 
-    const app = await service.apply('507f1f77bcf86cd799439011', Role.JOB_SEEKER, {
-      jobId: '507f1f77bcf86cd799439012',
-    });
+    const app = await service.apply(
+      '507f1f77bcf86cd799439011',
+      Role.JOB_SEEKER,
+      {
+        jobId: '507f1f77bcf86cd799439012',
+      },
+    );
     expect(app.status).toBe(ApplicationStatus.SUBMITTED);
     expect(notifications.notify).toHaveBeenCalled();
   });

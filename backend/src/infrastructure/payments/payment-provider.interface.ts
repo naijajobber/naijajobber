@@ -1,7 +1,4 @@
-export type CheckoutPurpose =
-  | 'SUBSCRIPTION'
-  | 'FEATURED_JOB'
-  | 'SPONSORED_JOB';
+export type CheckoutPurpose = 'SUBSCRIPTION' | 'FEATURED_JOB' | 'SPONSORED_JOB';
 
 export type CheckoutInput = {
   purpose: CheckoutPurpose;

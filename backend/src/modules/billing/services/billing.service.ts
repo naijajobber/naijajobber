@@ -10,7 +10,6 @@ import { ConfigService } from '@nestjs/config';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { randomBytes } from 'crypto';
-import { Role } from '../../../common/enums/role.enum';
 import { PaymentRouterService } from '../../../infrastructure/payments/payment-router.service';
 import { EmployersService } from '../../employers/services/employers.service';
 import { JobsRepository } from '../../jobs/repositories/jobs.repository';
@@ -240,7 +239,9 @@ export class BillingService implements OnModuleInit {
       currency = plan.currency;
       planCode = plan.code;
     } else {
-      const plan = await this.planModel.findOne({ code: 'FEATURED_JOB' }).exec();
+      const plan = await this.planModel
+        .findOne({ code: 'FEATURED_JOB' })
+        .exec();
       amount = plan?.price || 49;
       currency = plan?.currency || 'USD';
       if (!dto.jobId) throw new BadRequestException('jobId required');
@@ -292,7 +293,10 @@ export class BillingService implements OnModuleInit {
     });
 
     // Mock mode: auto-complete immediately for local DX
-    if (provider.name === 'mock' || this.config.get('payment.mode') === 'mock') {
+    if (
+      provider.name === 'mock' ||
+      this.config.get('payment.mode') === 'mock'
+    ) {
       await this.completePayment(reference);
     }
 
@@ -331,7 +335,7 @@ export class BillingService implements OnModuleInit {
       await this.jobsRepository.updateById(String(tx.metadata.jobId), {
         isFeatured: true,
         isUrgent: tx.purpose === 'SPONSORED_JOB' ? true : undefined,
-      } as never);
+      });
     }
 
     const count = await this.invoiceModel.countDocuments();
@@ -339,9 +343,7 @@ export class BillingService implements OnModuleInit {
       number: `INV-${String(count + 1).padStart(5, '0')}`,
       userId: tx.userId,
       transactionId: tx._id,
-      lineItems: [
-        { description: tx.purpose, amount: tx.amount },
-      ],
+      lineItems: [{ description: tx.purpose, amount: tx.amount }],
       total: tx.amount,
       currency: tx.currency,
       pdfUrl: '',
@@ -369,9 +371,7 @@ export class BillingService implements OnModuleInit {
     return this.subscriptionModel
       .findOne({
         userId: new Types.ObjectId(userId),
-        ...(employer.companyId
-          ? { companyId: employer.companyId }
-          : {}),
+        ...(employer.companyId ? { companyId: employer.companyId } : {}),
         status: 'ACTIVE',
       })
       .exec();
@@ -423,7 +423,10 @@ export class BillingService implements OnModuleInit {
   }
 
   /** Entitlement: featured/sponsored posting */
-  async canFeatureJobs(userId: string, companyId: string | null): Promise<boolean> {
+  async canFeatureJobs(
+    userId: string,
+    companyId: string | null,
+  ): Promise<boolean> {
     const sub = await this.subscriptionModel
       .findOne({
         userId: new Types.ObjectId(userId),

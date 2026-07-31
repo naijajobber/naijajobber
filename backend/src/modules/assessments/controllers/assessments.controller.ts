@@ -24,7 +24,10 @@ export class AssessmentsController {
 
   @Post()
   @Roles(Role.EMPLOYER, Role.RECRUITER)
-  create(@CurrentUser() user: JwtPayload, @Body() body: Record<string, unknown>) {
+  create(
+    @CurrentUser() user: JwtPayload,
+    @Body() body: Record<string, unknown>,
+  ) {
     return this.assessmentsService.create(user.sub, user.role, body);
   }
 

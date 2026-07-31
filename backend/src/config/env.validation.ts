@@ -20,7 +20,9 @@ export const envValidationSchema = Joi.object({
   MAIL_USER: Joi.string().optional().allow(''),
   MAIL_PASS: Joi.string().optional().allow(''),
   MAIL_FROM: Joi.string().optional(),
-  SEED_ADMIN_EMAIL: Joi.string().email({ tlds: { allow: false } }).optional(),
+  SEED_ADMIN_EMAIL: Joi.string()
+    .email({ tlds: { allow: false } })
+    .optional(),
   SEED_ADMIN_PASSWORD: Joi.string().optional(),
   THROTTLE_TTL: Joi.number().default(60),
   THROTTLE_LIMIT: Joi.number().default(100),

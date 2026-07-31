@@ -1,9 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Types } from 'mongoose';
-import {
-  CompanyRole,
-  InviteStatus,
-} from '../../../common/enums/domain.enum';
+import { CompanyRole, InviteStatus } from '../../../common/enums/domain.enum';
 
 export type EmployerDocument = HydratedDocument<Employer>;
 
@@ -19,7 +16,13 @@ export type EmployerDocument = HydratedDocument<Employer>;
   },
 })
 export class Employer {
-  @Prop({ type: Types.ObjectId, ref: 'User', required: true, unique: true, index: true })
+  @Prop({
+    type: Types.ObjectId,
+    ref: 'User',
+    required: true,
+    unique: true,
+    index: true,
+  })
   userId!: Types.ObjectId;
 
   @Prop({ type: Types.ObjectId, ref: 'Company', default: null, index: true })

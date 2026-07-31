@@ -94,10 +94,7 @@ export class CompaniesController {
   @Post('mine/api-keys')
   @Roles(Role.EMPLOYER, Role.RECRUITER)
   @ApiOperation({ summary: 'Generate a mock API key' })
-  generateKey(
-    @CurrentUser() user: JwtPayload,
-    @Body() dto: GenerateApiKeyDto,
-  ) {
+  generateKey(@CurrentUser() user: JwtPayload, @Body() dto: GenerateApiKeyDto) {
     return this.companiesService.generateApiKey(user.sub, user.role, dto.label);
   }
 
@@ -106,10 +103,7 @@ export class CompaniesController {
   @Post('mine/api-keys/:prefix/revoke')
   @Roles(Role.EMPLOYER, Role.RECRUITER)
   @ApiOperation({ summary: 'Revoke an API key by prefix' })
-  revokeKey(
-    @CurrentUser() user: JwtPayload,
-    @Param('prefix') prefix: string,
-  ) {
+  revokeKey(@CurrentUser() user: JwtPayload, @Param('prefix') prefix: string) {
     return this.companiesService.revokeApiKey(user.sub, user.role, prefix);
   }
 

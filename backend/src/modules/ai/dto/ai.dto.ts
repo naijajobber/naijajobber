@@ -45,7 +45,9 @@ export class CoverLetterDto {
 }
 
 export class JobMatchDto {
-  @ApiPropertyOptional({ description: 'Optional resume/profile snippet override' })
+  @ApiPropertyOptional({
+    description: 'Optional resume/profile snippet override',
+  })
   @IsOptional()
   @IsString()
   @MaxLength(20000)

@@ -19,7 +19,12 @@ export class Interview {
   @Prop({ type: Types.ObjectId, ref: 'Job', required: true, index: true })
   jobId!: Types.ObjectId;
 
-  @Prop({ type: Types.ObjectId, ref: 'Application', required: true, index: true })
+  @Prop({
+    type: Types.ObjectId,
+    ref: 'Application',
+    required: true,
+    index: true,
+  })
   applicationId!: Types.ObjectId;
 
   @Prop({ type: Types.ObjectId, ref: 'User', required: true, index: true })

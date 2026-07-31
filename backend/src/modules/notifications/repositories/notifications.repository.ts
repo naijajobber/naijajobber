@@ -87,12 +87,12 @@ export class NotificationsRepository {
     update: Partial<NotificationPreference>,
   ): Promise<NotificationPreferenceDocument> {
     const pref = await this.preferenceModel
-      .findOneAndUpdate(
-        { userId: new Types.ObjectId(userId) },
-        update,
-        { upsert: true, returnDocument: 'after', setDefaultsOnInsert: true },
-      )
+      .findOneAndUpdate({ userId: new Types.ObjectId(userId) }, update, {
+        upsert: true,
+        returnDocument: 'after',
+        setDefaultsOnInsert: true,
+      })
       .exec();
-    return pref!;
+    return pref;
   }
 }

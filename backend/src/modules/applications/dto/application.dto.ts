@@ -1,5 +1,12 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsEnum, IsMongoId, IsOptional, IsString, IsUrl, MaxLength } from 'class-validator';
+import {
+  IsEnum,
+  IsMongoId,
+  IsOptional,
+  IsString,
+  IsUrl,
+  MaxLength,
+} from 'class-validator';
 import { ApplicationStatus } from '../../../common/enums/domain.enum';
 
 export class CreateApplicationDto {

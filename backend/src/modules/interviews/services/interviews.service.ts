@@ -1,4 +1,8 @@
-import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { InterviewStatus } from '../../../common/enums/domain.enum';
@@ -35,7 +39,7 @@ export class InterviewsService {
 
     const interview = await this.interviewsRepository.create({
       jobId: application.jobId,
-      applicationId: application._id as Types.ObjectId,
+      applicationId: application._id,
       seekerUserId: application.applicantUserId,
       employerUserId: new Types.ObjectId(employerUserId),
       scheduledAt: new Date(dto.scheduledAt),
@@ -118,8 +122,7 @@ export class InterviewsService {
     const interview = await this.interviewsRepository.findById(id);
     if (!interview) throw new NotFoundException('Interview not found');
 
-    const isPrivileged =
-      role === Role.ADMIN || role === Role.SUPER_ADMIN;
+    const isPrivileged = role === Role.ADMIN || role === Role.SUPER_ADMIN;
     if (!isPrivileged && interview.employerUserId.toString() !== userId) {
       throw new ForbiddenException('Not allowed to modify this interview');
     }
@@ -128,7 +131,8 @@ export class InterviewsService {
     if (dto.scheduledAt) update.scheduledAt = new Date(dto.scheduledAt);
     if (dto.timezone !== undefined) update.timezone = dto.timezone;
     if (dto.meetingLink !== undefined) update.meetingLink = dto.meetingLink;
-    if (dto.recruiterName !== undefined) update.recruiterName = dto.recruiterName;
+    if (dto.recruiterName !== undefined)
+      update.recruiterName = dto.recruiterName;
     if (dto.status !== undefined) update.status = dto.status;
     if (dto.notes !== undefined) update.notes = dto.notes;
 

@@ -127,10 +127,7 @@ export class AdminController {
 
   @Post('employers/:id/deactivate')
   @Roles(...STAFF)
-  deactivateEmployer(
-    @CurrentUser() user: JwtPayload,
-    @Param('id') id: string,
-  ) {
+  deactivateEmployer(@CurrentUser() user: JwtPayload, @Param('id') id: string) {
     return this.adminService.deactivateEmployerMembership(user.sub, id);
   }
 
@@ -225,11 +222,7 @@ export class AdminController {
     @Param('id') id: string,
     @Body() body: { sponsored?: boolean },
   ) {
-    return this.adminService.sponsorJob(
-      user.sub,
-      id,
-      body.sponsored !== false,
-    );
+    return this.adminService.sponsorJob(user.sub, id, body.sponsored !== false);
   }
 
   @Post('jobs/:id/pause')
@@ -382,10 +375,7 @@ export class AdminController {
 
   @Post('notifications/broadcast')
   @Roles(...MARKETING)
-  broadcast(
-    @CurrentUser() user: JwtPayload,
-    @Body() dto: AdminBroadcastDto,
-  ) {
+  broadcast(@CurrentUser() user: JwtPayload, @Body() dto: AdminBroadcastDto) {
     return this.adminService.broadcast(user.sub, dto);
   }
 
@@ -397,10 +387,7 @@ export class AdminController {
 
   @Post('cms/pages')
   @Roles(...MARKETING)
-  createCmsPage(
-    @CurrentUser() user: JwtPayload,
-    @Body() dto: AdminCmsPageDto,
-  ) {
+  createCmsPage(@CurrentUser() user: JwtPayload, @Body() dto: AdminCmsPageDto) {
     return this.adminService.upsertCmsPage(user.sub, dto);
   }
 
@@ -517,10 +504,7 @@ export class AdminController {
 
   @Post('api-keys')
   @Roles(...STAFF)
-  generateApiKey(
-    @CurrentUser() user: JwtPayload,
-    @Body() dto: AdminApiKeyDto,
-  ) {
+  generateApiKey(@CurrentUser() user: JwtPayload, @Body() dto: AdminApiKeyDto) {
     return this.adminService.generateApiKey(user.sub, dto.name);
   }
 

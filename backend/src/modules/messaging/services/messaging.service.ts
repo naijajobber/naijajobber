@@ -11,10 +11,7 @@ import { ApplicationsRepository } from '../../applications/repositories/applicat
 import { EmployersService } from '../../employers/services/employers.service';
 import { JobsService } from '../../jobs/services/jobs.service';
 import { NotificationsService } from '../../notifications/services/notifications.service';
-import {
-  CreateConversationDto,
-  SendMessageDto,
-} from '../dto/messaging.dto';
+import { CreateConversationDto, SendMessageDto } from '../dto/messaging.dto';
 import { MessagingRepository } from '../repositories/messaging.repository';
 import { ConversationDocument } from '../schemas/conversation.schema';
 

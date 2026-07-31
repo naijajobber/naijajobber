@@ -8,9 +8,10 @@ import { Observable, map } from 'rxjs';
 import { ApiResponse } from '../interfaces/api-response.interface';
 
 @Injectable()
-export class ResponseInterceptor<T>
-  implements NestInterceptor<T, ApiResponse<T>>
-{
+export class ResponseInterceptor<T> implements NestInterceptor<
+  T,
+  ApiResponse<T>
+> {
   intercept(
     _context: ExecutionContext,
     next: CallHandler<T>,
@@ -64,7 +65,7 @@ export class ResponseInterceptor<T>
 
         return {
           success: true,
-          data: (data ?? null) as T,
+          data: data ?? null,
           meta: null,
           message: 'OK',
         };

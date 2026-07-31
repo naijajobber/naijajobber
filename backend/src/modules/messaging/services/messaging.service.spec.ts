@@ -1,5 +1,4 @@
 import { ForbiddenException } from '@nestjs/common';
-import { Role } from '../../../common/enums/role.enum';
 import { ApplicationsRepository } from '../../applications/repositories/applications.repository';
 import { EmployersService } from '../../employers/services/employers.service';
 import { JobsService } from '../../jobs/services/jobs.service';
@@ -32,10 +31,7 @@ describe('MessagingService', () => {
     } as never);
 
     await expect(
-      service.assertParticipant(
-        'c1',
-        '507f1f77bcf86cd799439099',
-      ),
+      service.assertParticipant('c1', '507f1f77bcf86cd799439099'),
     ).rejects.toBeInstanceOf(ForbiddenException);
   });
 

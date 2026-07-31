@@ -30,13 +30,23 @@ export class Job {
   @Prop({ required: true, trim: true })
   title!: string;
 
-  @Prop({ required: true, unique: true, lowercase: true, trim: true, index: true })
+  @Prop({
+    required: true,
+    unique: true,
+    lowercase: true,
+    trim: true,
+    index: true,
+  })
   slug!: string;
 
   @Prop({ required: true, trim: true })
   description!: string;
 
-  @Prop({ type: String, enum: EmploymentType, default: EmploymentType.FULL_TIME })
+  @Prop({
+    type: String,
+    enum: EmploymentType,
+    default: EmploymentType.FULL_TIME,
+  })
   employmentType!: EmploymentType;
 
   @Prop({ type: String, enum: WorkplaceType, default: WorkplaceType.REMOTE })
@@ -66,7 +76,12 @@ export class Job {
   @Prop({ trim: true, default: 'Software Engineering', index: true })
   category!: string;
 
-  @Prop({ type: String, enum: JobStatus, default: JobStatus.DRAFT, index: true })
+  @Prop({
+    type: String,
+    enum: JobStatus,
+    default: JobStatus.DRAFT,
+    index: true,
+  })
   status!: JobStatus;
 
   @Prop({ default: false, index: true })

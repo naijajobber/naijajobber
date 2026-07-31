@@ -7,14 +7,9 @@ import {
   Param,
   Patch,
   Post,
-  Req,
   UseGuards,
 } from '@nestjs/common';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CurrentUser } from '../../../common/decorators/current-user.decorator';
 import { Public } from '../../../common/decorators/public.decorator';
 import { Roles } from '../../../common/decorators/roles.decorator';
@@ -127,10 +122,7 @@ export class BillingController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Post('refunds')
-  requestRefund(
-    @CurrentUser() user: JwtPayload,
-    @Body() dto: CreateRefundDto,
-  ) {
+  requestRefund(@CurrentUser() user: JwtPayload, @Body() dto: CreateRefundDto) {
     return this.billingService.requestRefund(user.sub, dto);
   }
 

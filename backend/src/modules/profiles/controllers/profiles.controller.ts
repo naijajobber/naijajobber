@@ -53,7 +53,10 @@ export class ProfilesController {
 
   @Patch('profiles/me')
   @Roles(Role.JOB_SEEKER, Role.ADMIN, Role.SUPER_ADMIN)
-  updateMe(@CurrentUser() user: JwtPayload, @Body() dto: UpdateSeekerProfileDto) {
+  updateMe(
+    @CurrentUser() user: JwtPayload,
+    @Body() dto: UpdateSeekerProfileDto,
+  ) {
     return this.profilesService.updateMe(user.sub, dto);
   }
 
@@ -76,10 +79,7 @@ export class ProfilesController {
   @Post('profiles/me/cv/primary')
   @Roles(Role.JOB_SEEKER)
   @ApiOperation({ summary: 'Set primary CV URL from uploaded cvFiles' })
-  setPrimary(
-    @CurrentUser() user: JwtPayload,
-    @Body() body: { url: string },
-  ) {
+  setPrimary(@CurrentUser() user: JwtPayload, @Body() body: { url: string }) {
     return this.profilesService.setPrimaryCv(user.sub, body.url);
   }
 
@@ -128,7 +128,9 @@ export class ProfilesController {
 
   @Post('profiles/me/cv/generate')
   @Roles(Role.JOB_SEEKER)
-  @ApiOperation({ summary: 'Generate HTML CV from profile and save under /uploads' })
+  @ApiOperation({
+    summary: 'Generate HTML CV from profile and save under /uploads',
+  })
   generateCv(
     @CurrentUser() user: JwtPayload,
     @Body() body?: { template?: string },

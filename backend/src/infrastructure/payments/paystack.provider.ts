@@ -25,7 +25,9 @@ export class PaystackProvider implements PaymentProvider {
   }
 
   async createCheckout(input: CheckoutInput): Promise<CheckoutResult> {
-    this.logger.warn('Paystack scaffold checkout — not a live Paystack session');
+    this.logger.warn(
+      'Paystack scaffold checkout — not a live Paystack session',
+    );
     return {
       provider: this.name,
       checkoutUrl: `${input.successUrl}?reference=${input.reference}&provider=paystack&scaffold=1`,

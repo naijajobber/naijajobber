@@ -11,7 +11,10 @@ import Redis from 'ioredis';
 export class RedisService implements OnModuleInit, OnModuleDestroy {
   private readonly logger = new Logger(RedisService.name);
   private client: Redis | null = null;
-  private readonly memory = new Map<string, { value: string; expiresAt?: number }>();
+  private readonly memory = new Map<
+    string,
+    { value: string; expiresAt?: number }
+  >();
   private useMemory = false;
 
   constructor(private readonly config: ConfigService) {}

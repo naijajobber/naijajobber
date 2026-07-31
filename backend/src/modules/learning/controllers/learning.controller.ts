@@ -11,7 +11,9 @@ export class LearningController {
   constructor(private readonly learningService: LearningService) {}
 
   @Get('items')
-  @ApiOperation({ summary: 'List learning items (articles, tips, guides, videos)' })
+  @ApiOperation({
+    summary: 'List learning items (articles, tips, guides, videos)',
+  })
   items() {
     return this.learningService.listItems();
   }

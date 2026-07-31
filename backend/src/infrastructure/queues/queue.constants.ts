@@ -10,4 +10,3 @@ export type EmailJobPayload = {
 export type AlertsJobPayload = {
   type: 'DIGEST';
 };
-

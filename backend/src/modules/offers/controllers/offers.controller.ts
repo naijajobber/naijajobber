@@ -24,7 +24,10 @@ export class OffersController {
 
   @Post()
   @Roles(Role.EMPLOYER, Role.RECRUITER)
-  create(@CurrentUser() user: JwtPayload, @Body() body: Record<string, unknown>) {
+  create(
+    @CurrentUser() user: JwtPayload,
+    @Body() body: Record<string, unknown>,
+  ) {
     return this.offersService.create(user.sub, user.role, body);
   }
 

@@ -34,7 +34,8 @@ export class CompanyBranding {
   @Prop({ trim: true, default: '' })
   fontFamily!: string;
 }
-export const CompanyBrandingSchema = SchemaFactory.createForClass(CompanyBranding);
+export const CompanyBrandingSchema =
+  SchemaFactory.createForClass(CompanyBranding);
 
 @Schema({ _id: false })
 export class VerificationDocument {
@@ -151,7 +152,13 @@ export class Company {
   @Prop({ required: true, trim: true })
   name!: string;
 
-  @Prop({ required: true, unique: true, lowercase: true, trim: true, index: true })
+  @Prop({
+    required: true,
+    unique: true,
+    lowercase: true,
+    trim: true,
+    index: true,
+  })
   slug!: string;
 
   @Prop({ trim: true, default: '' })

@@ -36,7 +36,12 @@ export class TalentPoolService {
     } as never);
   }
 
-  async update(userId: string, role: string, id: string, dto: Record<string, unknown>) {
+  async update(
+    userId: string,
+    role: string,
+    id: string,
+    dto: Record<string, unknown>,
+  ) {
     await this.employersService.requireEmployerWithCompany(userId);
     this.employersService.ensureEmployerRole(role);
     const updated = await this.model

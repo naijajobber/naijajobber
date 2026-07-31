@@ -95,7 +95,10 @@ export class AuthService {
     };
   }
 
-  async logout(userId: string, refreshToken?: string): Promise<{ message: string }> {
+  async logout(
+    userId: string,
+    refreshToken?: string,
+  ): Promise<{ message: string }> {
     await this.usersRepository.updateById(userId, { refreshTokenHash: null });
     if (refreshToken) {
       const key = this.refreshBlacklistKey(refreshToken);
@@ -183,18 +186,15 @@ export class AuthService {
     return { message: 'Password reset successful' };
   }
 
-  async loginWithGoogle(input: {
-    code?: string;
-    mockEmail?: string;
-  }) {
+  async loginWithGoogle(input: { code?: string; mockEmail?: string }) {
     const clientId = this.config.get<string>('oauth.googleClientId') || '';
-    const clientSecret = this.config.get<string>('oauth.googleClientSecret') || '';
+    const clientSecret =
+      this.config.get<string>('oauth.googleClientSecret') || '';
 
     // Local mock when Google secrets are absent
     if (!clientId || !clientSecret) {
       const email = (
-        input.mockEmail ||
-        `google_user_${Date.now()}@gmail.com`
+        input.mockEmail || `google_user_${Date.now()}@gmail.com`
       ).toLowerCase();
       let user = await this.usersRepository.findByEmail(email);
       if (!user) {
@@ -237,8 +237,7 @@ export class AuthService {
         code: input.code,
         client_id: clientId,
         client_secret: clientSecret,
-        redirect_uri:
-          this.config.get<string>('oauth.googleCallbackUrl') || '',
+        redirect_uri: this.config.get<string>('oauth.googleCallbackUrl') || '',
         grant_type: 'authorization_code',
       }),
     });

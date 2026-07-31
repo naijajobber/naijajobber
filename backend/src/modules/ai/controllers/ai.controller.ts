@@ -50,7 +50,8 @@ export class AiController {
   @ApiOperation({ summary: 'Mock resume parser — extract profile fields' })
   parse(
     @CurrentUser() user: JwtPayload,
-    @Body() body: { resumeText?: string; resumeUrl?: string; fileName?: string },
+    @Body()
+    body: { resumeText?: string; resumeUrl?: string; fileName?: string },
   ) {
     return this.aiService.parseResume(user.sub, body);
   }

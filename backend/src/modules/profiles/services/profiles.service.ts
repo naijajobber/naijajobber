@@ -63,7 +63,11 @@ export class ProfilesService {
     return profile;
   }
 
-  async getByUserId(viewerId: string | null, viewerRole: string | null, userId: string) {
+  async getByUserId(
+    viewerId: string | null,
+    viewerRole: string | null,
+    userId: string,
+  ) {
     const profile = await this.profileModel
       .findOne({ userId: new Types.ObjectId(userId) })
       .exec();
@@ -221,7 +225,7 @@ export class ProfilesService {
         ...(firstName
           ? { firstName, lastName: rest.join(' ') || undefined }
           : {}),
-      } as Partial<import('../../users/schemas/user.schema').User>);
+      });
     }
     return profile;
   }
@@ -322,14 +326,20 @@ export class ProfilesService {
       'http://localhost:3001';
 
     const themes: Record<string, string> = {
-      modern: 'font-family: system-ui,sans-serif; color:#0f172a; --accent:#16a34a;',
-      professional: 'font-family: Georgia, serif; color:#111; --accent:#166534;',
-      creative: 'font-family: "Trebuchet MS",sans-serif; color:#1e1b4b; --accent:#7c3aed;',
-      minimal: 'font-family: Helvetica, Arial, sans-serif; color:#222; --accent:#444;',
+      modern:
+        'font-family: system-ui,sans-serif; color:#0f172a; --accent:#16a34a;',
+      professional:
+        'font-family: Georgia, serif; color:#111; --accent:#166534;',
+      creative:
+        'font-family: "Trebuchet MS",sans-serif; color:#1e1b4b; --accent:#7c3aed;',
+      minimal:
+        'font-family: Helvetica, Arial, sans-serif; color:#222; --accent:#444;',
     };
     const theme = themes[template] || themes.professional;
 
-    const name = [user?.firstName, user?.lastName].filter(Boolean).join(' ') || 'Candidate';
+    const name =
+      [user?.firstName, user?.lastName].filter(Boolean).join(' ') ||
+      'Candidate';
     const skills = (profile.skills || []).join(', ');
     const experience = (profile.experience || [])
       .map(
@@ -454,15 +464,16 @@ export class ProfilesService {
     const jobs = await Promise.all(
       saved.map(async (s) => {
         const job = await this.jobsRepository.findById(s.jobId.toString());
-        return { savedAt: (s as SavedJobDocument & { createdAt?: Date }).createdAt, job };
+        return {
+          savedAt: (s as SavedJobDocument & { createdAt?: Date }).createdAt,
+          job,
+        };
       }),
     );
     return jobs.filter((j) => j.job);
   }
 
   async listAlertSubscribers() {
-    return this.profileModel
-      .find({ 'jobAlertPrefs.enabled': true })
-      .exec();
+    return this.profileModel.find({ 'jobAlertPrefs.enabled': true }).exec();
   }
 }

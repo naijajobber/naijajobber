@@ -7,11 +7,7 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CurrentUser } from '../../../common/decorators/current-user.decorator';
 import { Roles } from '../../../common/decorators/roles.decorator';
 import { Role } from '../../../common/enums/role.enum';
@@ -76,10 +72,7 @@ export class ApplicationsController {
   @Get('jobs/:jobId/applications')
   @Roles(Role.EMPLOYER, Role.RECRUITER, Role.ADMIN, Role.SUPER_ADMIN)
   @ApiOperation({ summary: 'List applications for a job' })
-  listForJob(
-    @Param('jobId') jobId: string,
-    @CurrentUser() user: JwtPayload,
-  ) {
+  listForJob(@Param('jobId') jobId: string, @CurrentUser() user: JwtPayload) {
     return this.applicationsService.listForJob(jobId, user.sub, user.role);
   }
 
@@ -91,11 +84,6 @@ export class ApplicationsController {
     @CurrentUser() user: JwtPayload,
     @Body() dto: UpdateApplicationStatusDto,
   ) {
-    return this.applicationsService.updateStatus(
-      id,
-      user.sub,
-      user.role,
-      dto,
-    );
+    return this.applicationsService.updateStatus(id, user.sub, user.role, dto);
   }
 }

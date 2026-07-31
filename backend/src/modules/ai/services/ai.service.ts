@@ -33,7 +33,9 @@ export class AiService {
     await this.assertWithinLimits(userId);
     const text = await this.resolveResumeText(dto.resumeText, dto.resumeUrl);
     if (!text || text.length < 20) {
-      throw new BadRequestException('Provide resumeText or a fetchable resumeUrl');
+      throw new BadRequestException(
+        'Provide resumeText or a fetchable resumeUrl',
+      );
     }
 
     const provider = this.aiRouter.resolve();
@@ -92,7 +94,11 @@ export class AiService {
       tokensUsed: result.tokensUsed,
     });
     await this.bumpCounters(userId);
-    return { runId: run._id, letter: output.letter || result.content, model: result.model };
+    return {
+      runId: run._id,
+      letter: output.letter || result.content,
+      model: result.model,
+    };
   }
 
   /** Deterministic mock parser — extracts structured fields without a live LLM. */
@@ -121,7 +127,9 @@ export class AiService {
     ].filter((s) => blob.includes(s));
 
     const parsed = {
-      name: dto.fileName?.replace(/\.\w+$/, '').replace(/[_-]/g, ' ') || 'Candidate',
+      name:
+        dto.fileName?.replace(/\.\w+$/, '').replace(/[_-]/g, ' ') ||
+        'Candidate',
       email: emailMatch?.[0] || '',
       phone: phoneMatch?.[0]?.trim() || '',
       skills: skillHints.length
@@ -145,7 +153,13 @@ export class AiService {
         },
       ],
       certificates: blob.includes('aws')
-        ? [{ name: 'AWS Cloud Practitioner', organization: 'Amazon', issueDate: '2023' }]
+        ? [
+            {
+              name: 'AWS Cloud Practitioner',
+              organization: 'Amazon',
+              issueDate: '2023',
+            },
+          ]
         : [],
     };
 
@@ -213,7 +227,7 @@ export class AiService {
         };
       })
       .filter(Boolean)
-      .sort((a, b) => (b!.score as number) - (a!.score as number));
+      .sort((a, b) => b!.score - a!.score);
 
     // Fallback when mock scores reference missing indices or no jobs
     const finalMatches =
@@ -231,7 +245,10 @@ export class AiService {
     const run = await this.aiRepository.create({
       userId,
       type: 'JOB_MATCH',
-      input: { profilePreview: profileText.slice(0, 400), jobCount: jobs.length },
+      input: {
+        profilePreview: profileText.slice(0, 400),
+        jobCount: jobs.length,
+      },
       output,
       modelName: result.model,
       tokensUsed: result.tokensUsed,
@@ -253,7 +270,9 @@ export class AiService {
         return {
           applicationId: app._id.toString(),
           seekerUserId: app.applicantUserId.toString(),
-          name: [user?.firstName, user?.lastName].filter(Boolean).join(' ') || 'Candidate',
+          name:
+            [user?.firstName, user?.lastName].filter(Boolean).join(' ') ||
+            'Candidate',
           score,
           strengths: ['Skills overlap with job', 'Remote readiness'],
           weaknesses: ['Limited portfolio signals in mock mode'],
@@ -278,8 +297,7 @@ export class AiService {
   }
 
   private async assertWithinLimits(userId: string): Promise<void> {
-    const hourly =
-      this.config.get<number>('ai.hourlyLimit') || 10;
+    const hourly = this.config.get<number>('ai.hourlyLimit') || 10;
     const daily = this.config.get<number>('ai.dailyLimit') || 20;
 
     const hourKey = `ai:hour:${userId}`;

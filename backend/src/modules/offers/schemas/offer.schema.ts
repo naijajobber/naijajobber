@@ -8,7 +8,12 @@ export class Offer {
   @Prop({ type: Types.ObjectId, ref: 'Company', required: true, index: true })
   companyId!: Types.ObjectId;
 
-  @Prop({ type: Types.ObjectId, ref: 'Application', required: true, index: true })
+  @Prop({
+    type: Types.ObjectId,
+    ref: 'Application',
+    required: true,
+    index: true,
+  })
   applicationId!: Types.ObjectId;
 
   @Prop({ type: Types.ObjectId, ref: 'User', required: true, index: true })

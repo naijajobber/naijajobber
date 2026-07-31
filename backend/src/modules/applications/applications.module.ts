@@ -8,10 +8,7 @@ import { ProfilesModule } from '../profiles/profiles.module';
 import { UsersModule } from '../users/users.module';
 import { ApplicationsController } from './controllers/applications.controller';
 import { ApplicationsRepository } from './repositories/applications.repository';
-import {
-  Application,
-  ApplicationSchema,
-} from './schemas/application.schema';
+import { Application, ApplicationSchema } from './schemas/application.schema';
 import { ApplicationsService } from './services/applications.service';
 
 @Module({

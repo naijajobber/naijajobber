@@ -36,14 +36,15 @@ export class JobsService implements OnModuleInit {
 
   async onModuleInit(): Promise<void> {
     try {
-      const company =
-        await this.companiesService.findBySlug('novahire-africa');
+      const company = await this.companiesService.findBySlug('novahire-africa');
       const count = await this.jobsRepository.countByCompany(
         company._id.toString(),
       );
       if (count > 0) return;
 
-      const seeds: Array<Partial<CreateJobDto> & { title: string; description: string }> = [
+      const seeds: Array<
+        Partial<CreateJobDto> & { title: string; description: string }
+      > = [
         {
           title: 'Senior Frontend Engineer',
           description:
@@ -224,8 +225,10 @@ export class JobsService implements OnModuleInit {
       department: (dto as { department?: string }).department || '',
       country: (dto as { country?: string }).country || '',
       openings: (dto as { openings?: number }).openings || 1,
-      preferredSkills: (dto as { preferredSkills?: string[] }).preferredSkills || [],
-      responsibilities: (dto as { responsibilities?: string }).responsibilities || '',
+      preferredSkills:
+        (dto as { preferredSkills?: string[] }).preferredSkills || [],
+      responsibilities:
+        (dto as { responsibilities?: string }).responsibilities || '',
       requirements: (dto as { requirements?: string }).requirements || '',
       benefits: (dto as { benefits?: string }).benefits || '',
       hiringProcess: (dto as { hiringProcess?: string }).hiringProcess || '',
@@ -233,17 +236,25 @@ export class JobsService implements OnModuleInit {
         ? new Date((dto as unknown as { deadline: string }).deadline)
         : null,
       screeningQuestions:
-        (dto as unknown as {
-          screeningQuestions?: Array<{ id: string; prompt: string; type: string }>;
-        }).screeningQuestions || [],
+        (
+          dto as unknown as {
+            screeningQuestions?: Array<{
+              id: string;
+              prompt: string;
+              type: string;
+            }>;
+          }
+        ).screeningQuestions || [],
       tags: (dto as unknown as { tags?: string[] }).tags || [],
       scheduledPublishAt: (dto as unknown as { scheduledPublishAt?: string })
         .scheduledPublishAt
         ? new Date(
-            (dto as unknown as { scheduledPublishAt: string }).scheduledPublishAt,
+            (dto as unknown as { scheduledPublishAt: string })
+              .scheduledPublishAt,
           )
         : null,
-      sponsorBudget: (dto as unknown as { sponsorBudget?: number }).sponsorBudget || 0,
+      sponsorBudget:
+        (dto as unknown as { sponsorBudget?: number }).sponsorBudget || 0,
     });
   }
 
@@ -260,7 +271,11 @@ export class JobsService implements OnModuleInit {
     return updated;
   }
 
-  async publish(id: string, userId: string, role: string): Promise<JobDocument> {
+  async publish(
+    id: string,
+    userId: string,
+    role: string,
+  ): Promise<JobDocument> {
     const job = await this.findByIdOrFail(id);
     const { company } = await this.assertJobOwner(job, userId, role);
     if (company.verificationStatus !== CompanyVerificationStatus.VERIFIED) {
@@ -299,7 +314,9 @@ export class JobsService implements OnModuleInit {
     while (await this.jobsRepository.findBySlug(slug)) {
       slug = uniqueSlug(`${job.title}-copy`);
     }
-    const plain = (typeof job.toObject === 'function' ? job.toObject() : job) as unknown as Record<string, unknown>;
+    const plain = (typeof job.toObject === 'function'
+      ? job.toObject()
+      : job) as unknown as Record<string, unknown>;
     const {
       _id: _omit,
       id: _omit2,
@@ -401,7 +418,10 @@ export class JobsService implements OnModuleInit {
     const page = query.page || 1;
     const limit = query.limit || 20;
     const skills = query.skills
-      ? query.skills.split(',').map((s) => s.trim()).filter(Boolean)
+      ? query.skills
+          .split(',')
+          .map((s) => s.trim())
+          .filter(Boolean)
       : undefined;
 
     const { items, total } = await this.jobsRepository.search({

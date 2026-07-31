@@ -96,7 +96,9 @@ export class ApplicationsService {
       apps.map(async (app) => {
         const plain = typeof app.toObject === 'function' ? app.toObject() : app;
         try {
-          const job = await this.jobsService.findByIdOrFail(app.jobId.toString());
+          const job = await this.jobsService.findByIdOrFail(
+            app.jobId.toString(),
+          );
           return {
             ...plain,
             job: {
@@ -141,11 +143,7 @@ export class ApplicationsService {
     return updated;
   }
 
-  async listForJob(
-    jobId: string,
-    userId: string,
-    role: string,
-  ) {
+  async listForJob(jobId: string, userId: string, role: string) {
     const job = await this.jobsService.findByIdOrFail(jobId);
     await this.assertEmployerOwnsJob(job.companyId.toString(), userId, role);
     const apps = await this.applicationsRepository.findByJob(jobId);
@@ -153,12 +151,14 @@ export class ApplicationsService {
   }
 
   async listForCompany(userId: string, role: string) {
-    const employer =
-      await this.employersService.requireEmployerWithCompany(userId);
+    await this.employersService.requireEmployerWithCompany(userId);
     this.employersService.ensureEmployerRole(role);
     const jobs = await this.jobsService.mine(userId, role);
     const all: unknown[] = [];
-    for (const job of jobs as Array<{ _id: { toString: () => string }; title?: string }>) {
+    for (const job of jobs as Array<{
+      _id: { toString: () => string };
+      title?: string;
+    }>) {
       const apps = await this.applicationsRepository.findByJob(
         job._id.toString(),
       );
@@ -191,8 +191,7 @@ export class ApplicationsService {
   ) {
     return Promise.all(
       apps.map(async (app) => {
-        const plain =
-          typeof app.toObject === 'function' ? app.toObject() : app;
+        const plain = typeof app.toObject === 'function' ? app.toObject() : app;
         const user = await this.usersRepository.findById(
           app.applicantUserId.toString(),
         );

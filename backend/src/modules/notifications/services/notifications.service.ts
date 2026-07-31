@@ -53,9 +53,7 @@ export class NotificationsService {
         await this.emailDispatch.enqueue({
           to: user.email,
           subject: input.title,
-          html:
-            input.emailHtml ||
-            `<p>${input.body}</p><p>— NaijaJobber</p>`,
+          html: input.emailHtml || `<p>${input.body}</p><p>— NaijaJobber</p>`,
         });
         if (notification) {
           await this.notificationsRepository.setEmailSent(

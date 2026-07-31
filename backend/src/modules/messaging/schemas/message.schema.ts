@@ -27,7 +27,12 @@ export class MessageAttachment {
   },
 })
 export class Message {
-  @Prop({ type: Types.ObjectId, ref: 'Conversation', required: true, index: true })
+  @Prop({
+    type: Types.ObjectId,
+    ref: 'Conversation',
+    required: true,
+    index: true,
+  })
   conversationId!: Types.ObjectId;
 
   @Prop({ type: Types.ObjectId, ref: 'User', required: true, index: true })

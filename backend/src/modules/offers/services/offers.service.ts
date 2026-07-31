@@ -45,12 +45,10 @@ export class OffersService {
       employmentType: String(dto.employmentType || 'FULL_TIME'),
       status: 'PENDING',
     } as never);
-    await this.applicationsService.updateStatus(
-      String(app._id),
-      userId,
-      role,
-      { status: ApplicationStatus.OFFER, note: 'Offer extended' },
-    );
+    await this.applicationsService.updateStatus(String(app._id), userId, role, {
+      status: ApplicationStatus.OFFER,
+      note: 'Offer extended',
+    });
     await this.notificationsService.notify({
       userId: app.applicantUserId.toString(),
       type: 'OFFER',

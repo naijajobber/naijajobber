@@ -13,7 +13,9 @@ describe('UsersService', () => {
       findById: jest.fn(),
       updateById: jest.fn(),
       softDelete: jest.fn(),
-      findByEmail: jest.fn().mockResolvedValue({ _id: { toString: () => '1' } }),
+      findByEmail: jest
+        .fn()
+        .mockResolvedValue({ _id: { toString: () => '1' } }),
       create: jest.fn(),
     } as unknown as jest.Mocked<UsersRepository>;
 

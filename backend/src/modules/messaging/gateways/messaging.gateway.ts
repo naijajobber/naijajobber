@@ -46,7 +46,7 @@ export class MessagingGateway implements OnGatewayConnection {
         },
       );
       client.userId = payload.sub;
-      client.join(`user:${payload.sub}`);
+      void client.join(`user:${payload.sub}`);
       this.logger.log(`Socket connected ${payload.sub}`);
     } catch {
       client.disconnect();
@@ -63,7 +63,7 @@ export class MessagingGateway implements OnGatewayConnection {
       body.conversationId,
       client.userId,
     );
-    client.join(`conversation:${body.conversationId}`);
+    void client.join(`conversation:${body.conversationId}`);
     return { joined: body.conversationId };
   }
 
@@ -120,13 +120,11 @@ export class MessagingGateway implements OnGatewayConnection {
       body.messageId,
       client.userId,
     );
-    this.server
-      .to(`conversation:${body.conversationId}`)
-      .emit('message:read', {
-        messageId: body.messageId,
-        userId: client.userId,
-        readBy: message.readBy,
-      });
+    this.server.to(`conversation:${body.conversationId}`).emit('message:read', {
+      messageId: body.messageId,
+      userId: client.userId,
+      readBy: message.readBy,
+    });
     return message;
   }
 }

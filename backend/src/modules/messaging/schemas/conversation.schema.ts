@@ -21,7 +21,12 @@ export class Conversation {
   @Prop({ type: Types.ObjectId, ref: 'Job', default: null, index: true })
   jobId!: Types.ObjectId | null;
 
-  @Prop({ type: Types.ObjectId, ref: 'Application', default: null, index: true })
+  @Prop({
+    type: Types.ObjectId,
+    ref: 'Application',
+    default: null,
+    index: true,
+  })
   applicationId!: Types.ObjectId | null;
 
   @Prop({ type: Date, default: null })

@@ -34,7 +34,8 @@ export class CompaniesService implements OnModuleInit {
   ) {}
 
   async onModuleInit(): Promise<void> {
-    const existing = await this.companiesRepository.findBySlug('novahire-africa');
+    const existing =
+      await this.companiesRepository.findBySlug('novahire-africa');
     if (existing) return;
 
     await this.companiesRepository.create({
@@ -237,11 +238,7 @@ export class CompaniesService implements OnModuleInit {
     return { message: 'Revoked' };
   }
 
-  async registerWebhook(
-    userId: string,
-    role: string,
-    dto: RegisterWebhookDto,
-  ) {
+  async registerWebhook(userId: string, role: string, dto: RegisterWebhookDto) {
     const company = await this.requireMine(userId, role);
     const webhooks = [
       ...(company.webhooks || []),

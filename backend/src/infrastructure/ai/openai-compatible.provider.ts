@@ -1,4 +1,8 @@
-import { Injectable, Logger, ServiceUnavailableException } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  ServiceUnavailableException,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
   AiCompleteInput,
@@ -20,11 +24,9 @@ export class OpenAiCompatibleProvider implements AiProvider {
     }
 
     const baseUrl = (
-      this.config.get<string>('ai.openaiBaseUrl') ||
-      'https://api.openai.com/v1'
+      this.config.get<string>('ai.openaiBaseUrl') || 'https://api.openai.com/v1'
     ).replace(/\/$/, '');
-    const model =
-      this.config.get<string>('ai.openaiModel') || 'gpt-4o-mini';
+    const model = this.config.get<string>('ai.openaiModel') || 'gpt-4o-mini';
 
     const response = await fetch(`${baseUrl}/chat/completions`, {
       method: 'POST',

@@ -42,8 +42,14 @@ import {
   TransactionDocument,
 } from '../../billing/schemas/transaction.schema';
 import { CompaniesService } from '../../companies/services/companies.service';
-import { Company, CompanyDocument } from '../../companies/schemas/company.schema';
-import { Employer, EmployerDocument } from '../../employers/schemas/employer.schema';
+import {
+  Company,
+  CompanyDocument,
+} from '../../companies/schemas/company.schema';
+import {
+  Employer,
+  EmployerDocument,
+} from '../../employers/schemas/employer.schema';
 import {
   Interview,
   InterviewDocument,
@@ -76,7 +82,10 @@ import {
   AdminSettingsPatchDto,
   AdminTicketUpdateDto,
 } from '../dto/admin.dto';
-import { AdminAction, AdminActionDocument } from '../schemas/admin-action.schema';
+import {
+  AdminAction,
+  AdminActionDocument,
+} from '../schemas/admin-action.schema';
 import {
   BlogPost,
   BlogPostDocument,
@@ -137,7 +146,8 @@ export class AdminService implements OnModuleInit {
     private readonly subscriptionModel: Model<SubscriptionDocument>,
     @InjectModel(SubscriptionPlan.name)
     private readonly planModel: Model<SubscriptionPlanDocument>,
-    @InjectModel(Coupon.name) private readonly couponModel: Model<CouponDocument>,
+    @InjectModel(Coupon.name)
+    private readonly couponModel: Model<CouponDocument>,
     @InjectModel(Interview.name)
     private readonly interviewModel: Model<InterviewDocument>,
     @InjectModel(SupportTicket.name)
@@ -161,7 +171,9 @@ export class AdminService implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-    const existing = await this.settingsModel.findOne({ key: 'default' }).exec();
+    const existing = await this.settingsModel
+      .findOne({ key: 'default' })
+      .exec();
     if (!existing) {
       await this.settingsModel.create({
         key: 'default',
@@ -258,12 +270,18 @@ export class AdminService implements OnModuleInit {
         verificationStatus: CompanyVerificationStatus.REQUEST_INFO,
         isDeleted: false,
       }),
-      this.jobModel.countDocuments({ status: JobStatus.DRAFT, isDeleted: false }),
+      this.jobModel.countDocuments({
+        status: JobStatus.DRAFT,
+        isDeleted: false,
+      }),
       this.jobModel.countDocuments({
         status: JobStatus.PUBLISHED,
         isDeleted: false,
       }),
-      this.jobModel.countDocuments({ status: JobStatus.CLOSED, isDeleted: false }),
+      this.jobModel.countDocuments({
+        status: JobStatus.CLOSED,
+        isDeleted: false,
+      }),
       this.applicationModel.countDocuments({
         createdAt: { $gte: sevenDaysAgo },
       }),
@@ -377,7 +395,9 @@ export class AdminService implements OnModuleInit {
     const [items, total] = await Promise.all([
       this.userModel
         .find(filter)
-        .select('-password -refreshTokenHash -emailVerificationToken -passwordResetToken')
+        .select(
+          '-password -refreshTokenHash -emailVerificationToken -passwordResetToken',
+        )
         .sort({ createdAt: -1 })
         .skip((page - 1) * limit)
         .limit(limit)
@@ -570,9 +590,15 @@ export class AdminService implements OnModuleInit {
       )
       .exec();
     if (!company) throw new NotFoundException('Company not found');
-    await this.audit(actorId, 'COMPANY_ASSIGN_MODERATOR', 'company', companyId, {
-      moderatorUserId,
-    });
+    await this.audit(
+      actorId,
+      'COMPANY_ASSIGN_MODERATOR',
+      'company',
+      companyId,
+      {
+        moderatorUserId,
+      },
+    );
     return company;
   }
 
@@ -647,7 +673,12 @@ export class AdminService implements OnModuleInit {
   }
 
   async unpublishJob(actorId: string, jobId: string) {
-    return this.patchJobStatus(actorId, jobId, JobStatus.CLOSED, 'JOB_UNPUBLISH');
+    return this.patchJobStatus(
+      actorId,
+      jobId,
+      JobStatus.CLOSED,
+      'JOB_UNPUBLISH',
+    );
   }
 
   async approvePublishJob(actorId: string, jobId: string) {
@@ -689,9 +720,7 @@ export class AdminService implements OnModuleInit {
         { _id: jobId, isDeleted: false },
         {
           isFeatured: featured,
-          featuredUntil: featured
-            ? new Date(Date.now() + 30 * 86400000)
-            : null,
+          featuredUntil: featured ? new Date(Date.now() + 30 * 86400000) : null,
         },
         { returnDocument: 'after' },
       )
@@ -745,7 +774,9 @@ export class AdminService implements OnModuleInit {
   }
 
   async duplicateJob(actorId: string, jobId: string) {
-    const job = await this.jobModel.findOne({ _id: jobId, isDeleted: false }).exec();
+    const job = await this.jobModel
+      .findOne({ _id: jobId, isDeleted: false })
+      .exec();
     if (!job) throw new NotFoundException('Job not found');
     const slug = `${job.slug}-copy-${randomBytes(3).toString('hex')}`;
     const copy = await this.jobModel.create({
@@ -945,12 +976,15 @@ export class AdminService implements OnModuleInit {
         { upsert: true, returnDocument: 'after' },
       )
       .exec();
-    await this.audit(actorId, 'PLAN_UPSERT', 'plan', plan!.code, { ...dto });
+    await this.audit(actorId, 'PLAN_UPSERT', 'plan', plan.code, { ...dto });
     return plan;
   }
 
   async listCoupons() {
-    const coupons = await this.couponModel.find().sort({ createdAt: -1 }).exec();
+    const coupons = await this.couponModel
+      .find()
+      .sort({ createdAt: -1 })
+      .exec();
     return { data: coupons, meta: null, message: 'OK' };
   }
 
@@ -962,9 +996,15 @@ export class AdminService implements OnModuleInit {
       expiresAt: dto.expiresAt ? new Date(dto.expiresAt) : null,
       maxRedemptions: dto.maxRedemptions ?? 100,
     });
-    await this.audit(actorId, 'COUPON_CREATE', 'coupon', coupon._id.toString(), {
-      code: coupon.code,
-    });
+    await this.audit(
+      actorId,
+      'COUPON_CREATE',
+      'coupon',
+      coupon._id.toString(),
+      {
+        code: coupon.code,
+      },
+    );
     return coupon;
   }
 
@@ -1141,11 +1181,17 @@ export class AdminService implements OnModuleInit {
         /* ignore per-user failures */
       }
     }
-    await this.audit(actorId, 'NOTIFICATION_BROADCAST', 'notification', 'bulk', {
-      audience: dto.audience,
-      created,
-      title: dto.title,
-    });
+    await this.audit(
+      actorId,
+      'NOTIFICATION_BROADCAST',
+      'notification',
+      'bulk',
+      {
+        audience: dto.audience,
+        created,
+        title: dto.title,
+      },
+    );
     return { message: 'Broadcast queued (in-app)', created };
   }
 
@@ -1181,7 +1227,10 @@ export class AdminService implements OnModuleInit {
   }
 
   async listBlogPosts() {
-    const posts = await this.blogPostModel.find().sort({ updatedAt: -1 }).exec();
+    const posts = await this.blogPostModel
+      .find()
+      .sort({ updatedAt: -1 })
+      .exec();
     return { data: posts, meta: null, message: 'OK' };
   }
 
@@ -1223,13 +1272,15 @@ export class AdminService implements OnModuleInit {
   }
 
   async listLearningAdmin() {
-    const items = await this.learningModel.find().sort({ createdAt: -1 }).exec();
+    const items = await this.learningModel
+      .find()
+      .sort({ createdAt: -1 })
+      .exec();
     return { data: items, meta: null, message: 'OK' };
   }
 
   async createLearningItem(actorId: string, dto: AdminLearningItemDto) {
-    const type =
-      (dto.type as LearningItemType) || LearningItemType.ARTICLE;
+    const type = (dto.type as LearningItemType) || LearningItemType.ARTICLE;
     const item = await this.learningModel.create({
       title: dto.title,
       type,
@@ -1251,8 +1302,7 @@ export class AdminService implements OnModuleInit {
     id: string,
     dto: AdminLearningItemDto,
   ) {
-    const type =
-      (dto.type as LearningItemType) || LearningItemType.ARTICLE;
+    const type = (dto.type as LearningItemType) || LearningItemType.ARTICLE;
     const item = await this.learningModel
       .findByIdAndUpdate(
         id,
@@ -1455,16 +1505,22 @@ export class AdminService implements OnModuleInit {
   }
 
   async patchSettings(actorId: string, dto: AdminSettingsPatchDto) {
-    const doc = await this.settingsModel
+    await this.settingsModel
       .findOneAndUpdate(
         { key: 'default' },
         { $set: dto },
         { returnDocument: 'after', upsert: true },
       )
       .exec();
-    await this.audit(actorId, 'SETTINGS_PATCH', 'platform_settings', 'default', {
-      keys: Object.keys(dto),
-    });
+    await this.audit(
+      actorId,
+      'SETTINGS_PATCH',
+      'platform_settings',
+      'default',
+      {
+        keys: Object.keys(dto),
+      },
+    );
     return this.getSettings();
   }
 
@@ -1483,9 +1539,15 @@ export class AdminService implements OnModuleInit {
       { $push: { apiKeys: entry } },
       { upsert: true },
     );
-    await this.audit(actorId, 'API_KEY_GENERATE', 'platform_settings', entry.id, {
-      name,
-    });
+    await this.audit(
+      actorId,
+      'API_KEY_GENERATE',
+      'platform_settings',
+      entry.id,
+      {
+        name,
+      },
+    );
     return { id: entry.id, name, apiKey: raw, keyPrefix: entry.keyPrefix };
   }
 

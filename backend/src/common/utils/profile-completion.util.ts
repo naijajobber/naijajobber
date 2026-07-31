@@ -32,7 +32,9 @@ const WEIGHTS = {
   certifications: 10,
 } as const;
 
-export function computeProfileCompletionPercent(input: CompletionInput): number {
+export function computeProfileCompletionPercent(
+  input: CompletionInput,
+): number {
   const hasSkills =
     (input.skills?.length || 0) > 0 || (input.skillItems?.length || 0) > 0;
   const checks = [
@@ -49,8 +51,7 @@ export function computeProfileCompletionPercent(input: CompletionInput): number 
     { done: (input.experience?.length || 0) > 0, weight: WEIGHTS.experience },
     { done: (input.education?.length || 0) > 0, weight: WEIGHTS.education },
     {
-      done:
-        !!input.cvPdfUrl?.trim() || (input.cvFiles?.length || 0) > 0,
+      done: !!input.cvPdfUrl?.trim() || (input.cvFiles?.length || 0) > 0,
       weight: WEIGHTS.resume,
     },
     { done: (input.languages?.length || 0) > 0, weight: WEIGHTS.languages },
