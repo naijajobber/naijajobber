@@ -1,0 +1,21 @@
+Startup Checklist
+1. Foundation
+Create: Business Plan, Financial Model (budget, cash flow, projections), Grant Budget Narrative,
+Pitch Deck.
+2. Company Documents
+Company Profile, Mission & Vision, Product Overview, Org Chart, Hiring Plan, Partnership Strategy,
+Brand Guidelines, Executive Summary.
+3. Finance
+3-year forecast, department budgets, burn rate, runway, revenue model, use of funds, grant
+spending tracker, monthly P&L;, balance sheet, cash flow.
+4. Product
+PRD, technical architecture, roadmap, MVP scope, user journey, security/privacy plan.
+5. Impact
+KPIs: users, employers, jobs posted, placements, countries reached, revenue, community impact.
+6. Operations
+Separate accounting categories, asset register, compliance, monthly reporting, document
+repository.
+7. Master Folder
+Business Plan, Company Profile, Pitch Deck, Financial Model, Grant Budget, Budget Narrative,
+Revenue Model, Product Roadmap, PRD, Team Structure, Market Research, Impact Metrics, Risk
+Assessment, Legal Docs

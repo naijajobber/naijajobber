@@ -1,0 +1,345 @@
+/* NaijaJobber — light theme print brand */
+:root {
+  --nj-primary: #0f766e;
+  --nj-primary-dark: #0d5c56;
+  --nj-accent: #22c55e;
+  --nj-accent-soft: #dcfce7;
+  --nj-orange: #f97316;
+  --nj-bg: #ffffff;
+  --nj-surface: #f8fafc;
+  --nj-border: #e2e8f0;
+  --nj-text: #0f172a;
+  --nj-muted: #64748b;
+  --nj-font: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --nj-display: Georgia, "Times New Roman", serif;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+html {
+  width: 210mm;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 210mm;
+  font-family: var(--nj-font);
+  font-size: 10.5pt;
+  line-height: 1.55;
+  color: var(--nj-text);
+  background: var(--nj-bg);
+}
+
+.doc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--nj-primary);
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
+
+.doc-logo {
+  font-family: var(--nj-display);
+  font-size: 22pt;
+  font-weight: 700;
+  color: var(--nj-primary);
+  letter-spacing: -0.02em;
+}
+
+.doc-logo span {
+  color: var(--nj-accent);
+}
+
+.doc-meta {
+  text-align: right;
+  font-size: 8.5pt;
+  color: var(--nj-muted);
+}
+
+.doc-meta strong {
+  display: block;
+  color: var(--nj-text);
+  font-size: 9pt;
+}
+
+.cover {
+  width: 210mm;
+  height: 297mm;
+  min-height: 297mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  page-break-after: always;
+  background: linear-gradient(160deg, #f0fdfa 0%, #ffffff 45%, #f8fafc 100%);
+  padding: 32mm 24mm 28mm;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.cover-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cover-badge {
+  display: inline-block;
+  background: var(--nj-accent-soft);
+  color: var(--nj-primary-dark);
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.cover h1 {
+  font-family: var(--nj-display);
+  font-size: 32pt;
+  line-height: 1.15;
+  color: var(--nj-primary);
+  margin: 0 0 12px;
+  max-width: 100%;
+}
+
+.cover-title {
+  font-size: 36pt;
+}
+
+.cover-tagline {
+  font-size: 16pt;
+}
+
+.cover-sub {
+  margin-top: 40px;
+  color: var(--nj-muted);
+}
+
+.cover .tagline {
+  font-size: 14pt;
+  color: var(--nj-muted);
+  max-width: 85%;
+  margin-bottom: 32px;
+}
+
+.cover .confidential {
+  margin-top: auto;
+  font-size: 8pt;
+  color: var(--nj-muted);
+  border-top: 1px solid var(--nj-border);
+  padding-top: 12px;
+  width: 100%;
+}
+
+/* Content pages (after cover) */
+.cover ~ * {
+  margin-left: 16mm;
+  margin-right: 16mm;
+}
+
+.cover ~ .doc-header {
+  margin-top: 18mm;
+}
+
+.cover ~ .doc-footer {
+  margin-bottom: 22mm;
+}
+
+h2 {
+  font-family: var(--nj-display);
+  font-size: 16pt;
+  color: var(--nj-primary);
+  margin: 28px 0 10px;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-size: 11pt;
+  color: var(--nj-primary-dark);
+  margin: 18px 0 8px;
+  page-break-after: avoid;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+ul, ol {
+  margin: 0 0 12px;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 4px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 16px 0 20px;
+}
+
+.stat-card {
+  background: var(--nj-surface);
+  border: 1px solid var(--nj-border);
+  border-left: 4px solid var(--nj-primary);
+  padding: 12px 14px;
+  border-radius: 6px;
+}
+
+.stat-card .label {
+  font-size: 8pt;
+  color: var(--nj-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stat-card .value {
+  font-size: 18pt;
+  font-weight: 700;
+  color: var(--nj-primary);
+  margin-top: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 20px;
+  font-size: 9pt;
+  page-break-inside: avoid;
+}
+
+th {
+  background: var(--nj-primary);
+  color: #fff;
+  text-align: left;
+  padding: 8px 10px;
+  font-weight: 600;
+}
+
+td {
+  border: 1px solid var(--nj-border);
+  padding: 7px 10px;
+}
+
+tr:nth-child(even) td {
+  background: var(--nj-surface);
+}
+
+.highlight-box {
+  background: linear-gradient(135deg, #f0fdfa, #ecfdf5);
+  border: 1px solid #99f6e4;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 16px 0;
+}
+
+.callout {
+  border-left: 4px solid var(--nj-accent);
+  background: var(--nj-accent-soft);
+  padding: 12px 14px;
+  margin: 14px 0;
+  font-size: 9.5pt;
+}
+
+.page-break {
+  page-break-before: always;
+}
+
+.doc-footer {
+  margin-top: 32px;
+  padding-top: 10px;
+  border-top: 1px solid var(--nj-border);
+  font-size: 8pt;
+  color: var(--nj-muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Pitch deck slides */
+.slide {
+  width: 210mm;
+  height: 297mm;
+  min-height: 297mm;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32mm 24mm 28mm;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.slide.cover {
+  background: linear-gradient(160deg, #f0fdfa 0%, #ffffff 45%, #f8fafc 100%);
+}
+
+.slide-contact {
+  background: linear-gradient(160deg, #f0fdfa 0%, #ffffff 100%);
+}
+
+.slide:last-child {
+  page-break-after: auto;
+}
+
+.slide-label {
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--nj-accent);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.slide h1 {
+  font-family: var(--nj-display);
+  font-size: 28pt;
+  color: var(--nj-primary);
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+
+.slide h2 {
+  font-size: 20pt;
+  margin-top: 0;
+}
+
+.slide ul {
+  font-size: 13pt;
+  line-height: 1.6;
+}
+
+.slide .big-stat {
+  font-size: 48pt;
+  font-weight: 800;
+  color: var(--nj-primary);
+  line-height: 1;
+}
+
+.slide-accent-bar {
+  width: 64px;
+  height: 5px;
+  background: var(--nj-accent);
+  margin-bottom: 20px;
+  border-radius: 2px;
+}
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

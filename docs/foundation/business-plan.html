@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NaijaJobber — Business Plan</title>
+  <link rel="stylesheet" href="_brand.css" />
+</head>
+<body>
+  <section class="cover">
+    <div class="cover-inner">
+      <div class="cover-badge">Foundation · Confidential</div>
+      <div class="doc-logo">Naija<span>Jobber</span></div>
+      <h1>Business Plan</h1>
+      <p class="tagline">
+        AI-powered remote employment platform connecting African talent with global employers —
+        marketplace, compliance-ready workflows, and measurable hiring impact.
+      </p>
+      <p><strong>Version:</strong> 1.0 &nbsp;|&nbsp; <strong>Date:</strong> July 2026</p>
+    </div>
+    <p class="confidential">
+      This document contains proprietary information intended for investors, grant partners, and strategic advisors only.
+    </p>
+  </section>
+
+  <div class="doc-header">
+    <div class="doc-logo">Naija<span>Jobber</span></div>
+    <div class="doc-meta">
+      <strong>Business Plan</strong>
+      July 2026 · Foundation
+    </div>
+  </div>
+
+  <h2>1. Executive Summary</h2>
+  <p>
+    NaijaJobber is a two-sided employment marketplace built for the African remote-work economy.
+    The platform serves job seekers with profile depth, AI-assisted CV tools, applications, interviews,
+    learning, and wallet/referrals; and serves employers with company verification, job publishing,
+    applicant pipeline, team management, billing, and analytics.
+  </p>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="label">Target market</div><div class="value">Africa → Global</div></div>
+    <div class="stat-card"><div class="label">Revenue model</div><div class="value">SaaS + fees</div></div>
+    <div class="stat-card"><div class="label">Stage</div><div class="value">MVP live</div></div>
+  </div>
+  <p>
+    Our mission is to reduce friction between verified African talent and trustworthy global employers
+    while creating auditable impact metrics suitable for grant reporting (placements, remote jobs, verified employers, countries reached).
+  </p>
+
+  <h2>2. Problem Statement</h2>
+  <ul>
+    <li><strong>Fragmented hiring:</strong> Job seekers juggle informal channels; employers lack structured pipelines and verification.</li>
+    <li><strong>Trust gap:</strong> Cross-border hiring requires employer verification, document review, and moderation — rarely available in generalist boards.</li>
+    <li><strong>Preparation gap:</strong> Candidates lack accessible CV, interview, and learning tools aligned to remote roles.</li>
+    <li><strong>Impact opacity:</strong> Funders and partners need KPIs (hires, remote roles, demographics) that legacy tools do not surface.</li>
+  </ul>
+
+  <h2>3. Solution & Product</h2>
+  <p>NaijaJobber delivers end-to-end workflows in a single platform:</p>
+  <table>
+    <thead><tr><th>Stakeholder</th><th>Core capabilities (live / phased)</th></tr></thead>
+    <tbody>
+      <tr><td>Job seekers</td><td>Profile & CV suite, job search/apply, kanban applications, interviews, learning, referrals, wallet</td></tr>
+      <tr><td>Employers</td><td>Company profile & verification, job CRUD, applicants/pipeline, interviews, AI match (mock), team, billing</td></tr>
+      <tr><td>Platform ops</td><td>Admin & ops dashboards: moderation, support, finance, marketing CMS, fraud signals, audit</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box">
+    <strong>Technology:</strong> NestJS + MongoDB API, Next.js 15 frontend, JWT auth, mock AI/payments for demo-safe deployment,
+    Redis/BullMQ-ready infrastructure, role-based access for admin and ops staff.
+  </div>
+
+  <h2>4. Market Opportunity</h2>
+  <p>
+    Africa’s youth workforce is expanding while remote-first hiring accelerates globally.
+    Nigeria and broader Anglophone Africa represent a large pool of tech, creative, and professional talent
+    seeking USD/EUR-denominated remote roles. Employers seek cost-efficient, English-proficient talent with
+    verifiable profiles and structured application data.
+  </p>
+  <h3>Initial beachhead</h3>
+  <ul>
+    <li>Nigeria-based job seekers and diaspora-friendly remote roles</li>
+    <li>SME and growth-stage employers hiring 1–50 remote roles/year</li>
+    <li>Grant-aligned workforce development programs needing placement metrics</li>
+  </ul>
+
+  <h2>5. Business Model</h2>
+  <table>
+    <thead><tr><th>Stream</th><th>Description</th><th>Timing</th></tr></thead>
+    <tbody>
+      <tr><td>Employer subscriptions</td><td>Tiered plans (Basic / Pro / Enterprise) for job posts, featured listings, team seats</td><td>Year 1</td></tr>
+      <tr><td>Pay-per-post / sponsorship</td><td>Featured jobs, sponsored visibility, urgent badges</td><td>Year 1</td></tr>
+      <tr><td>Premium seeker tools</td><td>AI CV review, priority applications (optional add-on)</td><td>Year 2</td></tr>
+      <tr><td>Partnerships & grants</td><td>Workforce programs, NGO placement reporting, white-label pilots</td><td>Year 1–2</td></tr>
+    </tbody>
+  </table>
+
+  <h2>6. Go-to-Market Strategy</h2>
+  <ol>
+    <li><strong>Supply (seekers):</strong> University partnerships, referral program, learning content, social proof from placements.</li>
+    <li><strong>Demand (employers):</strong> Outbound to remote-friendly companies; verification-led trust; case studies on time-to-hire.</li>
+    <li><strong>Ops excellence:</strong> Moderation queue, support SLAs, finance ops for subscriptions/refunds.</li>
+    <li><strong>Grant narrative:</strong> Publish impact dashboard (seekers, remote jobs, hires, countries, women/youth provisional metrics).</li>
+  </ol>
+
+  <h2>7. Competitive Advantage</h2>
+  <ul>
+    <li>Purpose-built for African remote employment (not a generic global board)</li>
+    <li>Integrated verification, moderation, and admin/ops tooling</li>
+    <li>AI-assisted candidate tools with mock-safe demo mode for partners</li>
+    <li>Grant-ready impact and exportable reports (CSV/JSON)</li>
+    <li>Phased, production-grade architecture (NestJS modules, RBAC, audit logs)</li>
+  </ul>
+
+  <h2>8. Traction & Milestones (planned)</h2>
+  <table>
+    <thead><tr><th>Milestone</th><th>Target</th><th>Timeline</th></tr></thead>
+    <tbody>
+      <tr><td>MVP dashboards (seeker, employer, admin, ops)</td><td>Complete</td><td>Q3 2026</td></tr>
+      <tr><td>500 verified seeker profiles</td><td>Community seed</td><td>Q4 2026</td></tr>
+      <tr><td>50 verified employers</td><td>Pipeline</td><td>Q4 2026</td></tr>
+      <tr><td>100 published remote jobs</td><td>Marketplace liquidity</td><td>Q1 2027</td></tr>
+      <tr><td>First 25 documented hires</td><td>Impact KPI</td><td>Q1 2027</td></tr>
+    </tbody>
+  </table>
+
+  <h2>9. Team & Operations</h2>
+  <p>
+    Founding team covers product engineering, with planned hires in community/growth, employer success,
+    and support operations. Platform roles (Moderator, Support Agent, Finance Manager, Marketing Manager)
+    are modeled in-product for scalable ops.
+  </p>
+
+  <h2>10. Financial Summary</h2>
+  <p>
+    Year 1 focuses on product-market fit with controlled burn. Primary costs: cloud infrastructure,
+    part-time ops, marketing, and compliance. Revenue ramps from employer subscriptions in months 6–12.
+    See companion <em>Financial Model</em> and <em>Grant Budget Narrative</em> for detail.
+  </p>
+  <div class="callout">
+    <strong>Funding use (illustrative):</strong> 40% product & engineering · 25% go-to-market ·
+    20% operations & support · 10% compliance & legal · 5% contingency
+  </div>
+
+  <h2>11. Risks & Mitigations</h2>
+  <table>
+    <thead><tr><th>Risk</th><th>Mitigation</th></tr></thead>
+    <tbody>
+      <tr><td>Low marketplace liquidity</td><td>Focused geography; employer outbound; featured job promos</td></tr>
+      <tr><td>Fraud / fake employers</td><td>Verification docs, moderation queue, fraud heuristics</td></tr>
+      <tr><td>Payment friction</td><td>Mock → staged rollout (Paystack/Stripe); local currency support</td></tr>
+      <tr><td>Regulatory / data privacy</td><td>Privacy policy, data minimization, audit trails</td></tr>
+    </tbody>
+  </table>
+
+  <div class="doc-footer">
+    <span>NaijaJobber · Business Plan v1.0</span>
+    <span>Confidential · July 2026</span>
+  </div>
+</body>
+</html>

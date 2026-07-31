@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NaijaJobber — Financial Model</title>
+  <link rel="stylesheet" href="_brand.css" />
+</head>
+<body>
+  <section class="cover">
+    <div class="cover-inner">
+      <div class="cover-badge">Foundation · Financial Model</div>
+      <div class="doc-logo">Naija<span>Jobber</span></div>
+      <h1>Financial Model</h1>
+      <p class="tagline">
+        Budget, cash flow, and three-year projections for platform launch and scale.
+        Currency: USD (illustrative startup model).
+      </p>
+      <p><strong>Version:</strong> 1.0 &nbsp;|&nbsp; <strong>Date:</strong> July 2026</p>
+    </div>
+    <p class="confidential">Assumptions documented for investor and grant review. Update quarterly with actuals.</p>
+  </section>
+
+  <div class="doc-header">
+    <div class="doc-logo">Naija<span>Jobber</span></div>
+    <div class="doc-meta"><strong>Financial Model</strong>July 2026</div>
+  </div>
+
+  <h2>1. Model Assumptions</h2>
+  <table>
+    <thead><tr><th>Assumption</th><th>Value</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Launch market</td><td>Nigeria + remote-global</td><td>English-first roles</td></tr>
+      <tr><td>Employer plan (avg)</td><td>$79 / month</td><td>Blended Basic/Pro</td></tr>
+      <tr><td>Paying employers Y1 end</td><td>35</td><td>Ramp from month 6</td></tr>
+      <tr><td>Monthly burn (steady state Y1)</td><td>$18,000</td><td>Pre-scale team</td></tr>
+      <tr><td>Grant / seed in Year 1</td><td>$250,000</td><td>See grant narrative</td></tr>
+      <tr><td>Payment processing</td><td>3.5%</td><td>When live billing enabled</td></tr>
+    </tbody>
+  </table>
+
+  <h2>2. Year 1 Operating Budget (Monthly)</h2>
+  <table>
+    <thead>
+      <tr><th>Category</th><th>M1–3</th><th>M4–6</th><th>M7–9</th><th>M10–12</th><th>Annual</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Engineering & product</td><td>$8,000</td><td>$9,000</td><td>$10,000</td><td>$10,000</td><td>$111,000</td></tr>
+      <tr><td>Cloud & tools (AWS, Mongo, Redis, email)</td><td>$800</td><td>$1,200</td><td>$1,800</td><td>$2,200</td><td>$18,600</td></tr>
+      <tr><td>Marketing & community</td><td>$1,500</td><td>$2,500</td><td>$4,000</td><td>$5,000</td><td>$39,000</td></tr>
+      <tr><td>Operations & support</td><td>$1,000</td><td>$2,000</td><td>$3,500</td><td>$4,500</td><td>$33,000</td></tr>
+      <tr><td>Legal & compliance</td><td>$500</td><td>$500</td><td>$750</td><td>$750</td><td>$7,500</td></tr>
+      <tr><td>Admin & misc</td><td>$400</td><td>$500</td><td>$600</td><td>$700</td><td>$6,600</td></tr>
+      <tr><td><strong>Total opex</strong></td><td><strong>$12,200</strong></td><td><strong>$15,700</strong></td><td><strong>$20,650</strong></td><td><strong>$23,150</strong></td><td><strong>$215,700</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Revenue Projections (3 Years)</h2>
+  <table>
+    <thead>
+      <tr><th>Metric</th><th>Year 1</th><th>Year 2</th><th>Year 3</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Paying employers (avg)</td><td>18</td><td>120</td><td>350</td></tr>
+      <tr><td>Subscription revenue</td><td>$28,000</td><td>$185,000</td><td>$620,000</td></tr>
+      <tr><td>Featured / sponsored jobs</td><td>$4,000</td><td>$35,000</td><td>$95,000</td></tr>
+      <tr><td>Partnerships & grants (services)</td><td>$15,000</td><td>$40,000</td><td>$60,000</td></tr>
+      <tr><td><strong>Total revenue</strong></td><td><strong>$47,000</strong></td><td><strong>$260,000</strong></td><td><strong>$775,000</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h2>4. Cash Flow Summary (Year 1)</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Opening cash</th><th>Funding in</th><th>Revenue</th><th>Opex</th><th>Closing cash</th></tr></thead>
+    <tbody>
+      <tr><td>Q1</td><td>$0</td><td>$125,000</td><td>$2,000</td><td>$36,600</td><td>$90,400</td></tr>
+      <tr><td>Q2</td><td>$90,400</td><td>$0</td><td>$6,000</td><td>$47,100</td><td>$49,300</td></tr>
+      <tr><td>Q3</td><td>$49,300</td><td>$125,000</td><td>$14,000</td><td>$61,950</td><td>$126,350</td></tr>
+      <tr><td>Q4</td><td>$126,350</td><td>$0</td><td>$25,000</td><td>$69,450</td><td>$81,900</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <strong>Runway:</strong> At Q4 steady-state burn (~$23k/mo), closing cash ~$81.9k ≈ <strong>3.5 months</strong> without new revenue growth.
+    Revenue ramp in Year 2 extends runway materially.
+  </div>
+
+  <h2>5. Unit Economics (Employer)</h2>
+  <table>
+    <thead><tr><th>Metric</th><th>Target</th></tr></thead>
+    <tbody>
+      <tr><td>Average revenue per employer (ARPE)</td><td>$79 / mo</td></tr>
+      <tr><td>Gross margin (SaaS)</td><td>~85%</td></tr>
+      <tr><td>CAC (employer)</td><td>$350 (blended outbound + content)</td></tr>
+      <tr><td>LTV (24 mo retention @ 75%)</td><td>~$1,422</td></tr>
+      <tr><td>LTV : CAC</td><td>~4.1×</td></tr>
+    </tbody>
+  </table>
+
+  <h2>6. Use of Funds ($250k Grant / Seed)</h2>
+  <table>
+    <thead><tr><th>Allocation</th><th>Amount</th><th>%</th></tr></thead>
+    <tbody>
+      <tr><td>Product & engineering</td><td>$100,000</td><td>40%</td></tr>
+      <tr><td>Go-to-market & community</td><td>$62,500</td><td>25%</td></tr>
+      <tr><td>Operations & customer support</td><td>$50,000</td><td>20%</td></tr>
+      <tr><td>Legal, compliance, admin</td><td>$25,000</td><td>10%</td></tr>
+      <tr><td>Contingency</td><td>$12,500</td><td>5%</td></tr>
+    </tbody>
+  </table>
+
+  <h2>7. Key Metrics Dashboard</h2>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="label">Burn rate</div><div class="value">$18k</div></div>
+    <div class="stat-card"><div class="label">Runway (Y1 end)</div><div class="value">3.5 mo</div></div>
+    <div class="stat-card"><div class="label">Break-even</div><div class="value">Y2 Q3</div></div>
+  </div>
+
+  <h2>8. Sensitivity Notes</h2>
+  <ul>
+    <li><strong>Downside:</strong> 50% slower employer conversion → extend grant tranche or reduce marketing spend.</li>
+    <li><strong>Upside:</strong> Partnership-led employer bundles → CAC drops, ARPE rises with Enterprise tier.</li>
+    <li>Model excludes live payment fees until Stripe/Paystack production rollout.</li>
+  </ul>
+
+  <div class="doc-footer">
+    <span>NaijaJobber · Financial Model v1.0</span>
+    <span>Illustrative · Update with actuals</span>
+  </div>
+</body>
+</html>

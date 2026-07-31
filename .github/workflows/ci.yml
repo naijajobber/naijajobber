@@ -1,0 +1,111 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test -- --forceExit --passWithNoTests
+      - run: npm run build
+      - run: npm run smoke:auth
+      - run: npm run smoke:jobs
+      - run: npm run smoke:messaging
+      - run: npm run smoke:billing
+      - run: npm run smoke:ai
+      - run: npm run smoke:admin
+      - run: npm run smoke:profile
+
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_API_URL: http://localhost:3001/api/v1
+
+  playwright:
+    runs-on: ubuntu-latest
+    needs: [frontend]
+    services:
+      mongo:
+        image: mongo:7
+        ports:
+          - 27017:27017
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            frontend/package-lock.json
+            backend/package-lock.json
+      - name: Install backend
+        working-directory: backend
+        run: npm ci
+      - name: Install frontend
+        run: npm ci
+      - name: Install Playwright
+        run: npx playwright install --with-deps chromium
+      - name: Start API
+        working-directory: backend
+        env:
+          MONGODB_URI: mongodb://127.0.0.1:27017/naijajobber_e2e
+          REDIS_HOST: 127.0.0.1
+          JWT_ACCESS_SECRET: naijajobber-dev-access-secret-change
+          JWT_REFRESH_SECRET: naijajobber-dev-refresh-secret-change
+          FRONTEND_URL: http://127.0.0.1:3000
+          API_PUBLIC_URL: http://127.0.0.1:3001
+          PAYMENT_MODE: mock
+          AI_MODE: mock
+          SEED_ADMIN_EMAIL: admin@naijajobber.local
+          SEED_ADMIN_PASSWORD: Admin123!
+          PORT: 3001
+          NODE_ENV: development
+        run: |
+          npm run build
+          npm run start:prod &
+          for i in $(seq 1 30); do
+            curl -sf http://127.0.0.1:3001/api/v1/health && break
+            sleep 2
+          done
+      - name: Build & start frontend
+        env:
+          NEXT_PUBLIC_API_URL: http://127.0.0.1:3001/api/v1
+        run: |
+          npm run build
+          npx next start -p 3000 &
+          sleep 5
+      - name: Run Playwright
+        env:
+          E2E_BASE_URL: http://127.0.0.1:3000
+          E2E_API_URL: http://127.0.0.1:3001/api/v1
+        run: npm run test:e2e
