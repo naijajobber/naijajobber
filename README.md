@@ -19,3 +19,21 @@ cd frontend && npm run dev
 - Web: http://localhost:3000
 - API: http://localhost:3001/api/v1
 - Swagger: http://localhost:3001/api/docs
+
+## Deploy (Render + Vercel)
+
+### Backend — Render
+- Blueprint: [`render.yaml`](render.yaml) (Root Directory `backend`)
+- Or create a Web Service manually with:
+  - Build: `npm ci && npm run build`
+  - Start: `npm run start:prod`
+  - Health: `/api/v1/health`
+- Set `MONGODB_URI`, `FRONTEND_URL` (Vercel URL), `API_PUBLIC_URL` (Render URL), JWT secrets, seed admin.
+
+### Frontend — Vercel
+- Project **Root Directory** must be `frontend`
+- Config: [`frontend/vercel.json`](frontend/vercel.json) (Next.js App Router — deep links work without SPA `index.html` rewrites)
+- Env: `NEXT_PUBLIC_API_URL=https://YOUR-API.onrender.com/api/v1`
+- Redeploy after changing `NEXT_PUBLIC_*` (build-time vars)
+
+Then set Render `FRONTEND_URL` to the Vercel URL and redeploy the API (CORS).
