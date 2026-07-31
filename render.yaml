@@ -14,7 +14,7 @@ services:
     plan: free
     rootDir: backend
     region: oregon
-    buildCommand: npm ci && npm run build
+    buildCommand: npm ci --include=dev && npm run build
     startCommand: npm run start:prod
     healthCheckPath: /api/v1/health
     autoDeploy: true

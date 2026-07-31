@@ -25,10 +25,11 @@ cd frontend && npm run dev
 ### Backend — Render
 - Blueprint: [`render.yaml`](render.yaml) (Root Directory `backend`)
 - Or create a Web Service manually with:
-  - Build: `npm ci && npm run build`
+  - Build: `npm ci --include=dev && npm run build`
   - Start: `npm run start:prod`
   - Health: `/api/v1/health`
 - Set `MONGODB_URI`, `FRONTEND_URL` (Vercel URL), `API_PUBLIC_URL` (Render URL), JWT secrets, seed admin.
+- Note: `NODE_ENV=production` skips npm `devDependencies`; the build command uses `--include=dev`, and `@nestjs/cli` + `typescript` are also in `dependencies` so `nest build` works on Render.
 
 ### Frontend — Vercel
 - Project **Root Directory** must be `frontend`
