@@ -29,7 +29,8 @@ export const metadata: Metadata = {
     images: ["/logo.jpeg"],
   },
   icons: {
-    icon: "/logo.jpeg",
+    icon: [{ url: "/logo.jpeg", type: "image/jpeg" }],
+    apple: "/logo.jpeg",
   },
 };
 
