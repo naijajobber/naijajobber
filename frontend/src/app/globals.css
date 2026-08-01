@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4f7f5;
+  --foreground: #0c1210;
+  --muted: #5b6b63;
+  --card: #ffffff;
+  --border: #d7e2db;
+  --primary: #16a34a;
+  --primary-foreground: #04140b;
+  --accent: #22c55e;
+  --surface: #eaf3ee;
+  --ring: #22c55e;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #edf5f0;
+  --muted: #93a49a;
+  --card: #121212;
+  --border: #1f2a24;
+  --primary: #22c55e;
+  --primary-foreground: #04140b;
+  --accent: #2ecc71;
+  --surface: #0f1612;
+  --ring: #22c55e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-surface: var(--surface);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 40%, transparent);
+}
+
+a,
+button,
+[role="button"],
+[type="button"],
+[type="submit"],
+[type="reset"],
+summary,
+label[for],
+select,
+input[type="checkbox"],
+input[type="radio"],
+input[type="file"] {
+  cursor: pointer;
+}
+
+a:disabled,
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
