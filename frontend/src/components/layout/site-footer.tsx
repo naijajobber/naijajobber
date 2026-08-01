@@ -19,8 +19,8 @@ export function SiteFooter() {
             </span>
           </div>
           <p className="max-w-xs text-sm text-muted">
-            Africa&apos;s opportunity engine — From Hustle to Hire. Verified
-            local, remote, and Web3 work for African hustlers.
+            Africa&apos;s opportunity engine — verified local, remote, and Web3
+            work for African job seekers.
           </p>
         </div>
         {Object.entries(links).map(([title, items]) => (
@@ -39,8 +39,8 @@ export function SiteFooter() {
         ))}
       </div>
       <div className="border-t border-border py-5 text-center text-xs text-muted">
-        © {new Date().getFullYear()} NaijaJobber. The hustle is African. The
-        opportunity is NaijaJobber.
+        © {new Date().getFullYear()} NaijaJobber. Built for African job
+        seekers. The opportunity is NaijaJobber.
       </div>
     </footer>
   );

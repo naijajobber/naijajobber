@@ -39,7 +39,7 @@ export function HeroSection() {
           </h1>
           <p className="mt-5 max-w-xl text-base text-white/70 sm:text-lg">
             Africa&apos;s opportunity engine — verified local, remote, and Web3
-            work for hustlers who grind smart. The gap between you and your next
+            work for job seekers who grind smart. The gap between you and your next
             opportunity is information.
           </p>
 

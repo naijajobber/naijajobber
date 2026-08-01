@@ -3,19 +3,19 @@ const posts = [
     title: "From Telegram drops to a TalentTech revolution",
     date: "Jul 2, 2026",
     excerpt:
-      "Why information — not talent — is the real gap between hustle and hire.",
+      "Why information — not talent — is the real gap between searching and getting hired.",
   },
   {
     title: "Local, remote, and Web3: one opportunity engine",
     date: "Jun 18, 2026",
     excerpt:
-      "How NaijaJobber serves night hustlers, students, and builders in one place.",
+      "How NaijaJobber serves job seekers, students, and builders in one place.",
   },
   {
     title: "You don’t need a degree to break in",
     date: "Jun 1, 2026",
     excerpt:
-      "Access, hustle, and guidance — the badge of honor for people who grind smart.",
+      "Access, preparation, and guidance — practical paths for people who grind smart.",
   },
 ];
 
@@ -24,7 +24,7 @@ export function BlogPreview() {
     <section className="bg-surface/50 py-20">
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight">
-          From the hustle desk
+          From the opportunity desk
         </h2>
         <p className="mt-2 text-muted">
           Career access, community lessons, and opportunity culture.

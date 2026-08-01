@@ -15,7 +15,7 @@ export function NewsletterSection() {
           Get opportunities in your inbox
         </h2>
         <p className="mt-2 text-muted">
-          Curated local, remote, and Web3 drops for African hustlers. No spam.
+          Curated local, remote, and Web3 drops for African job seekers. No spam.
         </p>
         {done ? (
           <p className="mt-6 text-sm text-accent">

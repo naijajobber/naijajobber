@@ -1,7 +1,7 @@
 const stories = [
   {
     quote:
-      "I used to miss roles because information moved too fast on Telegram. NaijaJobber feels like the same hustle — with clearer, verified drops.",
+      "I used to miss roles because information moved too fast on Telegram. NaijaJobber feels like the same energy — with clearer, verified drops.",
     name: "Adaeze O.",
     role: "Community moderator · Lagos",
   },
@@ -13,7 +13,7 @@ const stories = [
   },
   {
     quote:
-      "You don’t need a degree to break in — you need access, hustle, and guidance. That’s the energy here.",
+      "You don’t need a degree to break in — you need access, preparation, and guidance. That’s the energy here.",
     name: "Tunde B.",
     role: "Web3 builder · Abuja",
   },
@@ -27,7 +27,7 @@ export function SuccessStories() {
           From the community
         </h2>
         <p className="mt-2 text-muted">
-          Real hustlers. Real access. From hustle to hire.
+          Real job seekers. Real access. Real opportunities.
         </p>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {stories.map((story) => (

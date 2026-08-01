@@ -17,7 +17,7 @@ export function TopCategories() {
           Opportunity lanes
         </h2>
         <p className="mt-2 text-muted">
-          Local, remote, and Web3 — explore by how African hustlers actually work.
+          Local, remote, and Web3 — explore by how African job seekers actually work.
         </p>
         <div className="mt-8 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
           {categories.map((cat) => (

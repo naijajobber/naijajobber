@@ -11,19 +11,19 @@ const faqs = [
   },
   {
     q: "Is NaijaJobber only for Nigerian talent?",
-    a: "Nigeria-first, Africa-wide. We started with Nigeria’s hustle ecosystem and are expanding from Lagos to Nairobi and beyond.",
+    a: "Nigeria-first, Africa-wide. We started with Nigeria’s opportunity ecosystem and are expanding from Lagos to Nairobi and beyond.",
   },
   {
     q: "What kinds of work can I find?",
     a: "Local gigs, remote roles, and Web3 opportunities — for students, freelancers, community managers, tradespeople, and career switchers.",
   },
   {
-    q: "Do hustlers pay to apply?",
+    q: "Do job seekers pay to apply?",
     a: "Core discovery and apply flows stay free. Optional Pro tools add learning and career support when you want them.",
   },
   {
     q: "What do employers get?",
-    a: "Credible African talent without building a full HR stack — verified recruiters, moderated listings, and faster access to people who hustle.",
+    a: "Credible African talent without building a full HR stack — verified recruiters, moderated listings, and faster access to job seekers.",
   },
 ];
 

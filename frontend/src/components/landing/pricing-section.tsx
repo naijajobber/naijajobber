@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 
 const plans = [
   {
-    name: "Hustler",
+    name: "Job Seeker",
     price: "Free",
-    description: "For jobbers getting started with verified opportunities.",
+    description: "For job seekers getting started with verified opportunities.",
     features: [
       "Profile & CV upload",
       "Local, remote & Web3 alerts",
@@ -16,9 +16,9 @@ const plans = [
     highlight: false,
   },
   {
-    name: "Pro Jobber",
+    name: "Pro Job Seeker",
     price: "$12/mo",
-    description: "Extra tools for hustlers serious about breaking in.",
+    description: "Extra tools for job seekers serious about breaking in.",
     features: [
       "Resume & cover letter support",
       "Learning & career guidance",
