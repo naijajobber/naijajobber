@@ -35,7 +35,7 @@ export function HeroSection() {
           </div>
 
           <h1 className="font-[family-name:var(--font-display)] text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-6xl">
-            From Hustle to Hire.
+            Building Africa&apos;s Biggest Opportunity Platform
           </h1>
           <p className="mt-5 max-w-xl text-base text-white/70 sm:text-lg">
             Africa&apos;s opportunity engine — verified local, remote, and Web3
@@ -46,7 +46,7 @@ export function HeroSection() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/register">
               <Button size="lg" className="bg-[#22c55e] text-[#04140b]">
-                Start hustling <ArrowRight size={16} />
+                Get Started <ArrowRight size={16} />
               </Button>
             </Link>
             <Link href="/register?role=employer">
@@ -55,7 +55,7 @@ export function HeroSection() {
                 variant="secondary"
                 className="border-white/15 bg-white/5 text-white hover:bg-white/10"
               >
-                Hire hustlers
+                Hire Job Seekers
               </Button>
             </Link>
           </div>
