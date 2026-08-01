@@ -15,16 +15,16 @@ const display = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: {
-    default: "NaijaJobber — Remote careers for African talent",
+    default: "NaijaJobber — From Hustle to Hire",
     template: "%s · NaijaJobber",
   },
   description:
-    "AI-powered remote employment platform connecting African talent with verified employers worldwide.",
+    "Africa’s opportunity engine — a grassroots JobTech platform connecting hustlers with verified local, remote, and Web3 work.",
   metadataBase: new URL("http://localhost:3000"),
   openGraph: {
-    title: "NaijaJobber",
+    title: "NaijaJobber — From Hustle to Hire",
     description:
-      "Discover legitimate remote jobs and hire skilled African professionals.",
+      "Bridging African talent with real-time local, remote, and Web3 opportunities. The hustle is African. The opportunity is NaijaJobber.",
     type: "website",
     images: ["/logo.jpeg"],
   },

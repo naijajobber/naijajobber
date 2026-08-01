@@ -70,7 +70,7 @@ function RegisterForm() {
         className="flex h-11 w-full rounded-md border border-border bg-card px-3 text-sm"
         {...register("role")}
       >
-        <option value="JOB_SEEKER">Job seeker</option>
+        <option value="JOB_SEEKER">Hustler / Jobber</option>
         <option value="EMPLOYER">Employer</option>
       </select>
       {error && <p className="text-sm text-red-500">{error}</p>}
@@ -91,7 +91,7 @@ export default function RegisterPage() {
           Create your account
         </h1>
         <p className="mt-2 text-sm text-muted">
-          Join NaijaJobber as talent or an employer.
+          Join NaijaJobber as a hustler or an employer. From Hustle to Hire.
         </p>
         <Suspense fallback={<p className="mt-8 text-sm text-muted">Loading…</p>}>
           <RegisterForm />

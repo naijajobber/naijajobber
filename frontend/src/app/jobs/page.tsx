@@ -56,10 +56,11 @@ export default function JobsPage() {
       <SiteHeader />
       <main className="mx-auto max-w-6xl px-4 py-12">
         <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight">
-          Remote jobs
+          Opportunities
         </h1>
         <p className="mt-2 text-muted">
-          Browse verified employer roles worldwide.
+          Browse verified local, remote, and Web3 roles — Nigeria-first,
+          Africa-wide.
         </p>
 
         <form
@@ -91,11 +92,12 @@ export default function JobsPage() {
             }}
           >
             <option value="">All categories</option>
-            <option value="Software Engineering">Software Engineering</option>
-            <option value="Product & Design">Product & Design</option>
-            <option value="Data & AI">Data & AI</option>
-            <option value="Marketing">Marketing</option>
-            <option value="Customer Success">Customer Success</option>
+            <option value="Web3 & Crypto">Web3 & Crypto</option>
+            <option value="Community & Mods">Community & Mods</option>
+            <option value="Software & Tech">Software & Tech</option>
+            <option value="Local Gigs">Local Gigs</option>
+            <option value="Design & Creators">Design & Creators</option>
+            <option value="Student & Entry">Student & Entry</option>
           </select>
           <select
             className="h-11 rounded-md border border-border bg-card px-3 text-sm"

@@ -6,20 +6,24 @@ import { cn } from "@/lib/utils";
 
 const faqs = [
   {
-    q: "Are the jobs on NaijaJobber verified?",
-    a: "Yes. Employer accounts go through verification before jobs are featured publicly.",
+    q: "Are opportunities on NaijaJobber verified?",
+    a: "We verify recruiters and moderate listings before they are featured. Verification improves trust — it is not an employment or income guarantee.",
   },
   {
     q: "Is NaijaJobber only for Nigerian talent?",
-    a: "NaijaJobber is built for African talent broadly — Nigeria-first, continent-wide.",
+    a: "Nigeria-first, Africa-wide. We started with Nigeria’s hustle ecosystem and are expanding from Lagos to Nairobi and beyond.",
   },
   {
-    q: "Do job seekers pay to apply?",
-    a: "Core apply flows are free. Optional Pro tools unlock AI career features.",
+    q: "What kinds of work can I find?",
+    a: "Local gigs, remote roles, and Web3 opportunities — for students, freelancers, community managers, tradespeople, and career switchers.",
   },
   {
-    q: "Can employers post remote and hybrid roles?",
-    a: "Yes — remote, hybrid, contract, full-time, freelance, and internship roles are supported.",
+    q: "Do hustlers pay to apply?",
+    a: "Core discovery and apply flows stay free. Optional Pro tools add learning and career support when you want them.",
+  },
+  {
+    q: "What do employers get?",
+    a: "Credible African talent without building a full HR stack — verified recruiters, moderated listings, and faster access to people who hustle.",
   },
 ];
 

@@ -1,21 +1,21 @@
 const stories = [
   {
     quote:
-      "I landed a fully remote NestJS role in three weeks. The employers were verified and the process felt trustworthy.",
-    name: "Chioma A.",
-    role: "Backend Engineer · Berlin",
+      "I used to miss roles because information moved too fast on Telegram. NaijaJobber feels like the same hustle — with clearer, verified drops.",
+    name: "Adaeze O.",
+    role: "Community moderator · Lagos",
   },
   {
     quote:
-      "NaijaJobber helped our team hire two senior designers from Lagos without the usual sourcing chaos.",
-    name: "Marcus L.",
-    role: "Head of Product · Toronto",
+      "We needed credible African talent without building a full HR stack. The community-to-platform speed is what stood out.",
+    name: "Kelechi M.",
+    role: "Project lead · Remote",
   },
   {
     quote:
-      "The AI resume insights helped me rewrite my portfolio and double interview callbacks.",
-    name: "Ibrahim K.",
-    role: "Product Designer · Accra",
+      "You don’t need a degree to break in — you need access, hustle, and guidance. That’s the energy here.",
+    name: "Tunde B.",
+    role: "Web3 builder · Abuja",
   },
 ];
 
@@ -24,9 +24,11 @@ export function SuccessStories() {
     <section className="py-20">
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight">
-          Success stories
+          From the community
         </h2>
-        <p className="mt-2 text-muted">Real placements. Real careers.</p>
+        <p className="mt-2 text-muted">
+          Real hustlers. Real access. From hustle to hire.
+        </p>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {stories.map((story) => (
             <blockquote

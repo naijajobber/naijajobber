@@ -35,17 +35,18 @@ export function HeroSection() {
           </div>
 
           <h1 className="font-[family-name:var(--font-display)] text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-6xl">
-            Remote careers for Africa&apos;s brightest talent.
+            From Hustle to Hire.
           </h1>
           <p className="mt-5 max-w-xl text-base text-white/70 sm:text-lg">
-            Discover verified remote roles worldwide and get matched with
-            employers who hire African professionals.
+            Africa&apos;s opportunity engine — verified local, remote, and Web3
+            work for hustlers who grind smart. The gap between you and your next
+            opportunity is information.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/register">
               <Button size="lg" className="bg-[#22c55e] text-[#04140b]">
-                Start as talent <ArrowRight size={16} />
+                Start hustling <ArrowRight size={16} />
               </Button>
             </Link>
             <Link href="/register?role=employer">
@@ -54,7 +55,7 @@ export function HeroSection() {
                 variant="secondary"
                 className="border-white/15 bg-white/5 text-white hover:bg-white/10"
               >
-                Hire talent
+                Hire hustlers
               </Button>
             </Link>
           </div>
@@ -74,12 +75,12 @@ export function HeroSection() {
             />
             <Input
               name="q"
-              placeholder="Search remote roles, skills, or companies"
+              placeholder="Search local, remote, or Web3 opportunities"
               className="border-white/10 bg-white/5 pl-9 text-white placeholder:text-white/40"
             />
           </div>
           <Button type="submit" className="bg-[#22c55e] text-[#04140b] sm:w-auto">
-            Search jobs
+            Search
           </Button>
         </motion.form>
       </div>

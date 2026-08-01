@@ -3,21 +3,25 @@ import { Button } from "@/components/ui/button";
 
 const plans = [
   {
-    name: "Starter",
+    name: "Hustler",
     price: "Free",
-    description: "For individual job seekers getting started.",
-    features: ["Profile & CV upload", "Job alerts", "Apply to 20 roles / mo"],
+    description: "For jobbers getting started with verified opportunities.",
+    features: [
+      "Profile & CV upload",
+      "Local, remote & Web3 alerts",
+      "Apply to open roles",
+    ],
     cta: "Create account",
     href: "/register",
     highlight: false,
   },
   {
-    name: "Pro Talent",
+    name: "Pro Jobber",
     price: "$12/mo",
-    description: "AI tools for serious career moves.",
+    description: "Extra tools for hustlers serious about breaking in.",
     features: [
-      "AI resume review",
-      "Cover letter generator",
+      "Resume & cover letter support",
+      "Learning & career guidance",
       "Priority matching",
     ],
     cta: "Go Pro",
@@ -27,7 +31,7 @@ const plans = [
   {
     name: "Employer",
     price: "$99/mo",
-    description: "Hire verified African talent at scale.",
+    description: "Hire credible African talent without a full HR stack.",
     features: [
       "Job posting + featured boost",
       "Applicant pipeline",
@@ -46,7 +50,9 @@ export function PricingSection() {
         <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight">
           Pricing
         </h2>
-        <p className="mt-2 text-muted">Simple plans. Cancel anytime.</p>
+        <p className="mt-2 text-muted">
+          Start free. Upgrade when you need more firepower.
+        </p>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {plans.map((plan) => (
             <div

@@ -12,8 +12,8 @@ import { unreadNotificationCount } from "@/lib/notifications-api";
 import { useAuthStore } from "@/store/auth-store";
 
 const nav = [
-  { href: "/#jobs", label: "Jobs" },
-  { href: "/#categories", label: "Categories" },
+  { href: "/#jobs", label: "Opportunities" },
+  { href: "/#categories", label: "Explore" },
   { href: "/#pricing", label: "Pricing" },
   { href: "/#faq", label: "FAQ" },
 ];

@@ -1,18 +1,21 @@
 const posts = [
   {
-    title: "How African engineers are winning global remote roles",
+    title: "From Telegram drops to a TalentTech revolution",
     date: "Jul 2, 2026",
-    excerpt: "A practical playbook for profiles, portfolios, and interview prep.",
+    excerpt:
+      "Why information — not talent — is the real gap between hustle and hire.",
   },
   {
-    title: "What verified employers look for in 2026",
+    title: "Local, remote, and Web3: one opportunity engine",
     date: "Jun 18, 2026",
-    excerpt: "Signals that separate strong applicants from the rest of the pile.",
+    excerpt:
+      "How NaijaJobber serves night hustlers, students, and builders in one place.",
   },
   {
-    title: "Building an AI-ready resume without keyword stuffing",
+    title: "You don’t need a degree to break in",
     date: "Jun 1, 2026",
-    excerpt: "Use AI to clarify impact — not invent experience.",
+    excerpt:
+      "Access, hustle, and guidance — the badge of honor for people who grind smart.",
   },
 ];
 
@@ -21,9 +24,11 @@ export function BlogPreview() {
     <section className="bg-surface/50 py-20">
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight">
-          From the blog
+          From the hustle desk
         </h2>
-        <p className="mt-2 text-muted">Career insights and hiring trends.</p>
+        <p className="mt-2 text-muted">
+          Career access, community lessons, and opportunity culture.
+        </p>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {posts.map((post) => (
             <article

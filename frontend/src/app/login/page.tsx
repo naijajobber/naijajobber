@@ -79,7 +79,7 @@ export default function LoginPage() {
           Welcome back
         </h1>
         <p className="mt-2 text-sm text-muted">
-          Log in to continue your NaijaJobber journey.
+          Log in and keep grinding — opportunity never sleeps.
         </p>
         <Suspense fallback={<p className="mt-8 text-sm text-muted">Loading…</p>}>
           <LoginForm />
